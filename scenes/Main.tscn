@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://6ueec22mi8co"]
+
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_1apkk"]
+[ext_resource type="Texture2D" uid="uid://b57tbraps4kgv" path="res://ressources/images/windows.jpg" id="1_o47bp"]
+[ext_resource type="PackedScene" uid="uid://cphd0yo8fpvb6" path="res://scenes/Job.tscn" id="3_6cpb1"]
+[ext_resource type="PackedScene" uid="uid://cocwo8aq5j7pw" path="res://scenes/Player.tscn" id="4_apvqn"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_1apkk")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.75, 2.75)
+
+[node name="background" type="Sprite2D" parent="."]
+z_index = -1
+scale = Vector2(0.37, 0.37)
+texture = ExtResource("1_o47bp")
+
+[node name="chomeur" parent="." node_paths=PackedStringArray("job") instance=ExtResource("4_apvqn")]
+job = NodePath("../job")
+
+[node name="job" parent="." node_paths=PackedStringArray("chomeur") instance=ExtResource("3_6cpb1")]
+chomeur = NodePath("../chomeur")
+
+[node name="text" type="RichTextLabel" parent="."]
+z_index = 1
+texture_filter = 1
+offset_left = -79.0
+offset_top = -25.0
+offset_right = 78.0
+offset_bottom = 25.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "[center]Vous avez trouvé un travail"
+scroll_active = false
+
+[node name="Button" type="Button" parent="."]
+z_index = 1
+offset_left = -79.0
+offset_top = 26.0
+offset_right = 79.0
+offset_bottom = 57.0
+text = "relancer"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cocwo8aq5j7pw"]
+
+[ext_resource type="Script" path="res://scripts/chomeur.gd" id="1_xeyat"]
+[ext_resource type="Texture2D" uid="uid://tfebaxgy4ocv" path="res://ressources/images/hihi.png" id="2_22kf5"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q6dtb"]
+
+[node name="chomeur" type="Area2D"]
+script = ExtResource("1_xeyat")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2.38419e-07, -4.76837e-07)
+scale = Vector2(0.0991903, 0.0991903)
+texture = ExtResource("2_22kf5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_q6dtb")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
