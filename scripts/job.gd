@@ -1,26 +1,32 @@
-extends RigidBody2D
+extends CharacterBody2D
 
-@export var speed = 200
+const SPEED = 200.0
+const JUMP_VELOCITY = -400.0
 @export var chomeur: Node2D
 
-func _ready() -> void:
-	pass
+signal game_over
 
-func _process(delta: float) -> void:
+func follow_chomeur(chomeur: Node2D):
 	if chomeur == null:
 		return
 		
 	var target_pos = chomeur.global_position
 	var direction = (target_pos - global_position).normalized()
-	var distance = global_position.distance_to(target_pos)
-	
-	if distance > 1:
-		global_position += direction * speed * delta
+	velocity = direction * SPEED
 
-func start(pos):
-	linear_velocity = Vector2.ZERO
-	sleeping = true
-	set_deferred("global_position", pos)
-	sleeping = false
-	show()
-	$CollisionShape2D2.disabled = false
+func _physics_process(delta: float) -> void:
+	follow_chomeur(chomeur)
+	
+	move_and_slide()
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		if collision.get_collider().name == "chomeur":
+			emit_signal("game_over")
+	
+	#var collision = move_and_collide(velocity * delta)
+	#if collision:
+		#print("collision")
+		#var collider = collision.get_collider()
+		#if collider.name == "chomeur":
+			#print("true")
+			#emit_signal("game_over")

@@ -1,21 +1,20 @@
 [gd_scene load_steps=4 format=3 uid="uid://cphd0yo8fpvb6"]
 
-[ext_resource type="Script" path="res://scripts/job.gd" id="1_x4e60"]
-[ext_resource type="Texture2D" uid="uid://cq31qogv6kt4f" path="res://ressources/images/job.jpg" id="2_3yfch"]
+[ext_resource type="Script" path="res://scripts/job.gd" id="1_ywle1"]
+[ext_resource type="Texture2D" uid="uid://c8ue61g8hkfcl" path="res://ressources/images/job.png" id="2_brvwf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_krkth"]
-radius = 18.0
-height = 54.0
+radius = 19.0
+height = 64.0
 
-[node name="job" type="RigidBody2D"]
-position = Vector2(112, 35)
-gravity_scale = 0.0
-script = ExtResource("1_x4e60")
+[node name="job" type="CharacterBody2D"]
+script = ExtResource("1_ywle1")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(-5.72205e-06, -7.62939e-06)
-scale = Vector2(0.0798316, 0.0798316)
-texture = ExtResource("2_3yfch")
+texture_filter = 2
+position = Vector2(-1.49012e-08, 1.43051e-06)
+scale = Vector2(0.0234153, 0.0310259)
+texture = ExtResource("2_brvwf")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_krkth")
