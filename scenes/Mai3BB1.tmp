@@ -1,6 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://6ueec22mi8co"]
+[gd_scene load_steps=9 format=3 uid="uid://6ueec22mi8co"]
 
-[ext_resource type="Script" path="res://scripts/main.gd" id="1_1apkk"]
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_1apkk"]
+[ext_resource type="Texture2D" uid="uid://b57tbraps4kgv" path="res://ressources/images/windows.jpg" id="1_o47bp"]
+[ext_resource type="PackedScene" uid="uid://cphd0yo8fpvb6" path="res://scenes/Job.tscn" id="3_6cpb1"]
 [ext_resource type="PackedScene" uid="uid://cocwo8aq5j7pw" path="res://scenes/Player.tscn" id="4_apvqn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_usct0"]
@@ -15,20 +17,16 @@ size = Vector2(20, 334)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xf6pq"]
 size = Vector2(444, 20)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ij2r3"]
-size = Vector2(78, 14)
-
-[sub_resource type="Gradient" id="Gradient_8nw4c"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_j1tp3"]
-gradient = SubResource("Gradient_8nw4c")
-fill_from = Vector2(0.509174, 0.697248)
-
 [node name="Main" type="Node"]
 script = ExtResource("1_1apkk")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2.5, 2.5)
+zoom = Vector2(2.6, 1.95)
+
+[node name="background" type="Sprite2D" parent="."]
+z_index = -1
+scale = Vector2(0.37, 0.37)
+texture = ExtResource("1_o47bp")
 
 [node name="text" type="RichTextLabel" parent="."]
 z_index = 1
@@ -39,7 +37,7 @@ offset_right = 78.0
 offset_bottom = 25.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 bbcode_enabled = true
-text = "[center]temp"
+text = "[center]Vous avez trouvé un travail"
 scroll_active = false
 
 [node name="Button" type="Button" parent="."]
@@ -68,39 +66,10 @@ shape = SubResource("RectangleShape2D_5p152")
 position = Vector2(0, 176)
 shape = SubResource("RectangleShape2D_xf6pq")
 
+[node name="job" parent="." node_paths=PackedStringArray("chomeur") instance=ExtResource("3_6cpb1")]
+visible = false
+chomeur = NodePath("../chomeur")
+
 [node name="chomeur" parent="." instance=ExtResource("4_apvqn")]
-
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
-position = Vector2(-141, 96)
-gravity_scale = 0.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-shape = SubResource("RectangleShape2D_ij2r3")
-
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
-scale = Vector2(1.21875, 0.21875)
-texture = SubResource("GradientTexture2D_j1tp3")
-
-[node name="RigidBody2D2" type="RigidBody2D" parent="."]
-position = Vector2(77, 70)
-gravity_scale = 0.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2"]
-shape = SubResource("RectangleShape2D_ij2r3")
-
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D2"]
-scale = Vector2(1.21875, 0.21875)
-texture = SubResource("GradientTexture2D_j1tp3")
-
-[node name="RigidBody2D3" type="RigidBody2D" parent="."]
-position = Vector2(168, 26)
-gravity_scale = 0.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D3"]
-shape = SubResource("RectangleShape2D_ij2r3")
-
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D3"]
-scale = Vector2(1.21875, 0.21875)
-texture = SubResource("GradientTexture2D_j1tp3")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
