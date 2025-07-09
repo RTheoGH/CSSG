@@ -4,16 +4,16 @@
 [ext_resource type="Texture2D" uid="uid://c8ue61g8hkfcl" path="res://ressources/images/job.png" id="2_brvwf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_krkth"]
-radius = 19.0
-height = 64.0
+radius = 8.0
+height = 24.0
 
 [node name="job" type="CharacterBody2D"]
 script = ExtResource("1_ywle1")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 texture_filter = 2
-position = Vector2(-1.49012e-08, 1.43051e-06)
-scale = Vector2(0.0234153, 0.0310259)
+position = Vector2(-1.90735e-06, 0)
+scale = Vector2(0.00974687, 0.0129149)
 texture = ExtResource("2_brvwf")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]

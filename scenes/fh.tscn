@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://b7l70y2u67sys"]
+
+[ext_resource type="Texture2D" uid="uid://d3hue610kd8e3" path="res://ressources/images/full_heart-1.png" id="1_vgulm"]
+[ext_resource type="Texture2D" uid="uid://cxdp88npwc66i" path="res://ressources/images/full_heart-2.png" id="2_r8cwf"]
+[ext_resource type="Texture2D" uid="uid://de30sq6emtng6" path="res://ressources/images/full_heart-3.png" id="3_15jyg"]
+[ext_resource type="Texture2D" uid="uid://byykcj0v68txa" path="res://ressources/images/full_heart-4.png" id="4_q7qrf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sx0fg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_vgulm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_r8cwf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_15jyg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_q7qrf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_sx0fg")
+frame_progress = 0.530491

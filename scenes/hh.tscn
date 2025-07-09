@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://7p7pyc824wu3"]
+
+[ext_resource type="Texture2D" uid="uid://bbjtnrg1jvaaf" path="res://ressources/images/half_heart.png" id="1_02k7u"]
+
+[node name="Hh" type="Sprite2D"]
+texture_filter = 1
+texture = ExtResource("1_02k7u")

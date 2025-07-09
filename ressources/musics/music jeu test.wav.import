@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://772ggq0sx8jb"
+path="res://.godot/imported/music jeu test.wav-985466aa63f5bf86ef68bf3161eeac2d.sample"
+
+[deps]
+
+source_file="res://ressources/musics/music jeu test.wav"
+dest_files=["res://.godot/imported/music jeu test.wav-985466aa63f5bf86ef68bf3161eeac2d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

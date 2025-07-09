@@ -1,9 +1,16 @@
 extends Node
 
+var running: bool
+@onready var music = $AudioStreamPlayer
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	running = true
+	$AudioStreamPlayer.play()
 	new_game()
-	#get_node("job").connect("game_over", Callable(self, "_on_game_over"))
+	$HUD/Lifebar.position = Vector2(50,50)
+	get_node("job").connect("hit", Callable(self, "_on_hit"))
+	get_node("HUD").get_node("Lifebar").connect("game_over", Callable(self, "_on_game_over"))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -31,22 +38,37 @@ func _process(delta: float) -> void:
 		print(cam.zoom.x,",",cam.zoom.y)
 	
 	var target_pos = player_pos + offset
-	var speed = 275.0
-	cam.global_position = cam.global_position.move_toward(target_pos,speed*delta)
+	var speed = get_node("chomeur").SPEED - 10
+	if running:
+		cam.global_position = cam.global_position.move_toward(target_pos,speed*delta)
 
 func new_game():
 	get_node("text").hide()
 	get_node("Button").hide()
 	get_node("chomeur").set_physics_process(true)
 	get_node("chomeur").global_position = Vector2(0,0)
-	#get_node("job").set_physics_process(true)
-	#get_node("job").global_position = Vector2(150,100)
+	get_node("job").set_physics_process(true)
+	get_node("job").global_position = Vector2(150,100)
+	running = true
+	get_node("HUD").get_node("Lifebar").current_health = 5
+	get_node("HUD").get_node("Lifebar").update_hearts()
+	$AudioStreamPlayer.play()
+	
+func _on_hit():
+	#get_node("text").show()
+	#get_node("Button").show()
+	#get_node("chomeur").set_physics_process(false)
+	#get_node("job").set_physics_process(false)
+	get_node("HUD").get_node("Lifebar").take_damage()
 	
 func _on_game_over():
 	get_node("text").show()
 	get_node("Button").show()
 	get_node("chomeur").set_physics_process(false)
-	#get_node("job").set_physics_process(false)
+	get_node("job").set_physics_process(false)
+	get_node("Camera2D").global_position = Vector2(0,0)
+	running = false
+	$AudioStreamPlayer.stop()
 
 func _on_button_pressed() -> void:
 	new_game()

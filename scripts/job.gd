@@ -1,10 +1,10 @@
 extends CharacterBody2D
 
-const SPEED = 200.0
+const SPEED = 150.0
 const JUMP_VELOCITY = -400.0
 @export var chomeur: Node2D
 
-signal game_over
+signal hit
 
 func follow_chomeur(chomeur: Node2D):
 	if chomeur == null:
@@ -21,7 +21,7 @@ func _physics_process(delta: float) -> void:
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		if collision.get_collider().name == "chomeur":
-			emit_signal("game_over")
+			emit_signal("hit")
 	
 	#var collision = move_and_collide(velocity * delta)
 	#if collision:
