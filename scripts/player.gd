@@ -13,6 +13,9 @@ func get_input():
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 func _physics_process(delta: float) -> void:
+	
+	if Global.fight_mode:
+		return
 	#_animated_sprite.play("default")q
 	if(prev_position.x>position.x):
 		_animated_sprite.scale.x = 1

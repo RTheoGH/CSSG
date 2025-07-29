@@ -15,6 +15,8 @@ func follow_chomeur(chomeur: Node2D):
 	velocity = direction * SPEED
 
 func _physics_process(delta: float) -> void:
+	if Global.fight_mode:
+		return
 	follow_chomeur(chomeur)
 	
 	move_and_slide()
