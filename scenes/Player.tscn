@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cocwo8aq5j7pw"]
+[gd_scene load_steps=16 format=3 uid="uid://cocwo8aq5j7pw"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_n4xk2"]
 [ext_resource type="Texture2D" uid="uid://g3i7o27g62t" path="res://ressources/images/studentA1.png" id="2_a60q7"]
@@ -6,13 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://dxtqm8ntffy5m" path="res://ressources/images/StudentAfall.png" id="4_1qomw"]
 [ext_resource type="Texture2D" uid="uid://dwe1wgd0eqp4m" path="res://ressources/images/StudentAjump.png" id="5_ntb35"]
 [ext_resource type="Texture2D" uid="uid://b5aebivgsdxlm" path="res://ressources/images/studentA_marche1.png" id="6_ofwvn"]
+[ext_resource type="Texture2D" uid="uid://df5c12qe5rkj5" path="res://ressources/images/sneak.png" id="6_tcqrd"]
 [ext_resource type="Texture2D" uid="uid://dvfvru3b5wus1" path="res://ressources/images/studentA_marche2.png" id="7_cb6vq"]
+[ext_resource type="Texture2D" uid="uid://cq8acad81146r" path="res://ressources/images/Studenthaut-1.png" id="7_ot331"]
+[ext_resource type="Texture2D" uid="uid://d2wjix7xlvk0p" path="res://ressources/images/Studenthaut-2.png" id="8_3g2sl"]
 [ext_resource type="Texture2D" uid="uid://ddmk5vg0t8lfe" path="res://ressources/images/studentA_marche3.png" id="8_u5m2k"]
 [ext_resource type="Texture2D" uid="uid://bmsfej5fhcbui" path="res://ressources/images/studentA_marche4.png" id="9_vi40x"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bskm6"]
-radius = 6.0
-height = 28.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c0f4m"]
 animations = [{
@@ -45,6 +44,25 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("6_tcqrd")
+}],
+"loop": true,
+"name": &"sneak",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_ot331")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3g2sl")
+}],
+"loop": true,
+"name": &"view_top",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("6_ofwvn")
 }, {
 "duration": 1.0,
@@ -61,14 +79,29 @@ animations = [{
 "speed": 4.0
 }]
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
-script = ExtResource("1_n4xk2")
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bskm6"]
+radius = 6.0
+height = 24.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_bskm6")
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_beuge"]
+radius = 6.0
+height = 18.0
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+collision_layer = 9
+collision_mask = 9
+script = ExtResource("1_n4xk2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(-1, 0)
 sprite_frames = SubResource("SpriteFrames_c0f4m")
-animation = &"walk"
+animation = &"sneak"
+
+[node name="Tall" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_bskm6")
+
+[node name="Small" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("CapsuleShape2D_beuge")

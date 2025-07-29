@@ -11,8 +11,11 @@ var invincible_timer = 0.0
 
 signal game_over
 
+var player
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:	
+	player = get_parent().get_parent().get_node("chomeur")
 	update_hearts()
 
 func update_hearts() -> void:
@@ -46,6 +49,8 @@ func take_damage() -> void:
 	current_health -= 1
 	update_hearts()
 	
+	player.set_invincible(true)
+	
 	if current_health == 0:
 		emit_signal("game_over")
 	
@@ -58,4 +63,5 @@ func _process(delta: float) -> void:
 		invincible_timer -= delta
 		
 		if invincible_timer <= 0:
+			player.set_invincible(false)
 			invincible = false

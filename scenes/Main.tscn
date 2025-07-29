@@ -1,10 +1,18 @@
-[gd_scene load_steps=14 format=3 uid="uid://6ueec22mi8co"]
+[gd_scene load_steps=16 format=3 uid="uid://6ueec22mi8co"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_1apkk"]
 [ext_resource type="PackedScene" uid="uid://bvc6ijsw2wpn0" path="res://scenes/UI.tscn" id="2_h4x6i"]
 [ext_resource type="PackedScene" uid="uid://cocwo8aq5j7pw" path="res://scenes/Player.tscn" id="4_apvqn"]
 [ext_resource type="AudioStream" uid="uid://772ggq0sx8jb" path="res://ressources/musics/music jeu test.wav" id="4_r14mf"]
 [ext_resource type="PackedScene" uid="uid://cphd0yo8fpvb6" path="res://scenes/Job.tscn" id="5_y55mw"]
+[ext_resource type="PackedScene" uid="uid://iqcu8iqk2bde" path="res://scenes/plateforme.tscn" id="6_p4iim"]
+[ext_resource type="PackedScene" uid="uid://bmqjuoupt4vqd" path="res://scenes/map.tscn" id="7_od2uo"]
+[ext_resource type="Script" path="res://scenes/timer.gd" id="8_it0lm"]
+[ext_resource type="Texture2D" uid="uid://c2jyv58nsm15a" path="res://ressources/images/goat.png" id="9_in5b8"]
+[ext_resource type="AudioStream" uid="uid://55ok6y3fhtdv" path="res://ressources/sounds/lutz_1.mp3" id="10_xgx00"]
+[ext_resource type="AudioStream" uid="uid://bc0ivjpkv2g6e" path="res://ressources/sounds/lutz_2.mp3" id="11_q4qov"]
+[ext_resource type="AudioStream" uid="uid://dd5qrqseamcyc" path="res://ressources/sounds/lutz_3.mp3" id="12_dy66s"]
+[ext_resource type="AudioStream" uid="uid://cgvpn6nqecl5u" path="res://ressources/sounds/lutz_4.mp3" id="13_2kace"]
 
 [sub_resource type="FontFile" id="FontFile_sxdul"]
 cache/0/16/0/ascent = 0.0
@@ -83,26 +91,12 @@ cache/0/15/0/underline_position = 0.0
 cache/0/15/0/underline_thickness = 0.0
 cache/0/15/0/scale = 1.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_usct0"]
-size = Vector2(20, 333)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bmtwn"]
-size = Vector2(444, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5p152"]
-size = Vector2(20, 334)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xf6pq"]
-size = Vector2(444, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ij2r3"]
-size = Vector2(78, 14)
-
-[sub_resource type="Gradient" id="Gradient_8nw4c"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_j1tp3"]
-gradient = SubResource("Gradient_8nw4c")
-fill_from = Vector2(0.509174, 0.697248)
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hq08k"]
+streams_count = 4
+stream_0/stream = ExtResource("10_xgx00")
+stream_1/stream = ExtResource("11_q4qov")
+stream_2/stream = ExtResource("12_dy66s")
+stream_3/stream = ExtResource("13_2kace")
 
 [node name="Main" type="Node"]
 script = ExtResource("1_1apkk")
@@ -116,9 +110,9 @@ zoom = Vector2(2.5, 2.5)
 
 [node name="text" type="RichTextLabel" parent="."]
 offset_left = -60.0
-offset_top = -48.0
+offset_top = -27.0
 offset_right = 61.0
-offset_bottom = 19.0
+offset_bottom = 40.0
 theme_override_fonts/normal_font = SubResource("FontFile_sxdul")
 theme_override_font_sizes/normal_font_size = 15
 bbcode_enabled = true
@@ -127,67 +121,51 @@ text = "[center]TU AS TROUVÉ UN TRAVAIL MOUHAHAHA"
 [node name="Button" type="Button" parent="."]
 z_index = 1
 offset_left = -79.0
-offset_top = 26.0
+offset_top = 47.0
 offset_right = 79.0
-offset_bottom = 57.0
+offset_bottom = 78.0
 text = "relancer"
-
-[node name="walls" type="StaticBody2D" parent="." groups=["walls"]]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="walls"]
-position = Vector2(-232, 0.5)
-shape = SubResource("RectangleShape2D_usct0")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="walls"]
-position = Vector2(0, -177)
-shape = SubResource("RectangleShape2D_bmtwn")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="walls"]
-position = Vector2(232, 0)
-shape = SubResource("RectangleShape2D_5p152")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="walls"]
-position = Vector2(0, 176)
-shape = SubResource("RectangleShape2D_xf6pq")
 
 [node name="chomeur" parent="." instance=ExtResource("4_apvqn")]
 
-[node name="plat1" type="RigidBody2D" parent="."]
-position = Vector2(-141, 96)
-gravity_scale = 0.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="plat1"]
-shape = SubResource("RectangleShape2D_ij2r3")
-
-[node name="Sprite2D" type="Sprite2D" parent="plat1"]
-scale = Vector2(1.21875, 0.21875)
-texture = SubResource("GradientTexture2D_j1tp3")
-
-[node name="plat2" type="StaticBody2D" parent="."]
-position = Vector2(77, 70)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="plat2"]
-shape = SubResource("RectangleShape2D_ij2r3")
-
-[node name="Sprite2D" type="Sprite2D" parent="plat2"]
-scale = Vector2(1.21875, 0.21875)
-texture = SubResource("GradientTexture2D_j1tp3")
-
-[node name="plat3" type="StaticBody2D" parent="."]
-position = Vector2(168, 26)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="plat3"]
-shape = SubResource("RectangleShape2D_ij2r3")
-
-[node name="Sprite2D" type="Sprite2D" parent="plat3"]
-scale = Vector2(1.21875, 0.21875)
-texture = SubResource("GradientTexture2D_j1tp3")
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_r14mf")
-volume_db = -10.0
+volume_db = -20.0
 
 [node name="job" parent="." node_paths=PackedStringArray("chomeur") instance=ExtResource("5_y55mw")]
 chomeur = NodePath("../chomeur")
 
+[node name="Plateforme" parent="." instance=ExtResource("6_p4iim")]
+position = Vector2(-23, 99)
+
+[node name="Plateforme2" parent="." instance=ExtResource("6_p4iim")]
+position = Vector2(154, 39)
+
+[node name="Plateforme3" parent="." instance=ExtResource("6_p4iim")]
+position = Vector2(-47, -42)
+
+[node name="Plateforme4" parent="." instance=ExtResource("6_p4iim")]
+position = Vector2(-135, 156)
+
+[node name="Map" parent="." instance=ExtResource("7_od2uo")]
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+script = ExtResource("8_it0lm")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Timer"]
+
+[node name="TextureRect" type="TextureRect" parent="Timer/CanvasLayer"]
+visible = false
+offset_left = 3.0
+offset_top = 110.0
+offset_right = 1153.0
+offset_bottom = 530.0
+texture = ExtResource("9_in5b8")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Timer"]
+stream = SubResource("AudioStreamRandomizer_hq08k")
+volume_db = -10.0
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="Timer" to="Timer" method="_on_timeout"]

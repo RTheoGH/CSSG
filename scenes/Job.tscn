@@ -1,20 +1,21 @@
 [gd_scene load_steps=4 format=3 uid="uid://cphd0yo8fpvb6"]
 
 [ext_resource type="Script" path="res://scripts/job.gd" id="1_ywle1"]
-[ext_resource type="Texture2D" uid="uid://c8ue61g8hkfcl" path="res://ressources/images/job.png" id="2_brvwf"]
+[ext_resource type="Texture2D" uid="uid://bkuiqjfabbr45" path="res://ressources/images/job-1.png" id="2_mre3a"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_krkth"]
-radius = 8.0
-height = 24.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njjev"]
+size = Vector2(32, 56)
 
 [node name="job" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 8
 script = ExtResource("1_ywle1")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
-texture_filter = 2
-position = Vector2(-1.90735e-06, 0)
-scale = Vector2(0.00974687, 0.0129149)
-texture = ExtResource("2_brvwf")
+texture_filter = 1
+position = Vector2(0, 1.90735e-06)
+scale = Vector2(1.07641, 1.42628)
+texture = ExtResource("2_mre3a")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_krkth")
+shape = SubResource("RectangleShape2D_njjev")
