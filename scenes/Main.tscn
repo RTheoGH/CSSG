@@ -104,9 +104,27 @@ script = ExtResource("1_1apkk")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.5, 2.5)
 
-[node name="HUD" type="CanvasLayer" parent="."]
+[node name="WorldHUD" type="CanvasLayer" parent="."]
 
-[node name="Lifebar" parent="HUD" instance=ExtResource("2_h4x6i")]
+[node name="Lifebar" parent="WorldHUD" instance=ExtResource("2_h4x6i")]
+
+[node name="FightHUD" type="CanvasLayer" parent="."]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="FightHUD"]
+offset_left = -230.0
+offset_top = 55.0
+offset_right = 230.0
+offset_bottom = 129.0
+text = "	Un [ennemi] sauvage apparaît !"
+
+[node name="ColorRect" type="ColorRect" parent="FightHUD/RichTextLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.266667)
 
 [node name="text" type="RichTextLabel" parent="."]
 offset_left = -60.0

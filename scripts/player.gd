@@ -34,6 +34,9 @@ func set_invincible(state: bool) -> void:
 		modulate.a = 1.0
 
 func _physics_process(delta: float) -> void:
+	
+	if Global.fight_mode:
+		return
 	#_animated_sprite.play("default")q
 	if(prev_position.x>position.x):
 		_animated_sprite.scale.x = 1
