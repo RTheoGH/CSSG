@@ -1,7 +1,8 @@
-[gd_scene load_steps=29 format=3 uid="uid://6ueec22mi8co"]
+[gd_scene load_steps=32 format=3 uid="uid://6ueec22mi8co"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_1apkk"]
 [ext_resource type="PackedScene" uid="uid://bvc6ijsw2wpn0" path="res://scenes/UI.tscn" id="2_h4x6i"]
+[ext_resource type="Texture2D" uid="uid://b7g7sfkus2msy" path="res://ressources/images/temp_fond-1.png.png" id="3_anvqx"]
 [ext_resource type="Texture2D" uid="uid://g3i7o27g62t" path="res://ressources/images/studentA1.png" id="3_tcata"]
 [ext_resource type="PackedScene" uid="uid://cocwo8aq5j7pw" path="res://scenes/Player.tscn" id="4_apvqn"]
 [ext_resource type="AudioStream" uid="uid://772ggq0sx8jb" path="res://ressources/musics/music jeu test.wav" id="4_r14mf"]
@@ -9,9 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://dxtqm8ntffy5m" path="res://ressources/images/StudentAfall.png" id="5_hudx5"]
 [ext_resource type="PackedScene" uid="uid://cphd0yo8fpvb6" path="res://scenes/Job.tscn" id="5_y55mw"]
 [ext_resource type="Texture2D" uid="uid://dwe1wgd0eqp4m" path="res://ressources/images/StudentAjump.png" id="6_8tkyn"]
-[ext_resource type="PackedScene" path="res://scenes/plateforme.tscn" id="6_p4iim"]
+[ext_resource type="PackedScene" uid="uid://iqcu8iqk2bde" path="res://scenes/plateforme.tscn" id="6_p4iim"]
 [ext_resource type="Texture2D" uid="uid://df5c12qe5rkj5" path="res://ressources/images/sneak.png" id="7_27ulv"]
-[ext_resource type="PackedScene" path="res://scenes/map.tscn" id="7_od2uo"]
+[ext_resource type="PackedScene" uid="uid://bmqjuoupt4vqd" path="res://scenes/map.tscn" id="7_od2uo"]
 [ext_resource type="Script" path="res://scenes/timer.gd" id="8_it0lm"]
 [ext_resource type="Texture2D" uid="uid://cq8acad81146r" path="res://ressources/images/Studenthaut-1.png" id="8_l7gre"]
 [ext_resource type="Texture2D" uid="uid://c2jyv58nsm15a" path="res://ressources/images/goat.png" id="9_in5b8"]
@@ -92,6 +93,18 @@ animations = [{
 "name": &"walk",
 "speed": 4.0
 }]
+
+[sub_resource type="Gradient" id="Gradient_deyqw"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.175325, 0.337662)
+colors = PackedColorArray(0, 0, 0, 0.545098, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2jul0"]
+gradient = SubResource("Gradient_deyqw")
+fill = 1
+fill_from = Vector2(0.5, 0.7)
+fill_to = Vector2(0.5, 0.3)
+metadata/_snap_enabled = true
 
 [sub_resource type="FontFile" id="FontFile_sxdul"]
 cache/0/16/0/ascent = 0.0
@@ -197,6 +210,7 @@ color = Color(0.141176, 0.141176, 0.141176, 0)
 [node name="FightHUD" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="FightHUD"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -208,6 +222,14 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.266667)
 
+[node name="TextureRect" type="TextureRect" parent="FightHUD"]
+texture_filter = 1
+offset_left = -5.0
+offset_top = -269.0
+offset_right = 1152.0
+offset_bottom = 888.0
+texture = ExtResource("3_anvqx")
+
 [node name="RichTextLabel" type="RichTextLabel" parent="FightHUD"]
 offset_left = 235.0
 offset_top = 472.0
@@ -215,15 +237,24 @@ offset_right = 872.0
 offset_bottom = 596.0
 
 [node name="Enemy_fight_sprite" type="AnimatedSprite2D" parent="FightHUD"]
+texture_filter = 1
 position = Vector2(771, 342)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_lv3x1")
 
 [node name="Player_fight_sprite" type="AnimatedSprite2D" parent="FightHUD"]
+z_index = 2
 texture_filter = 1
 position = Vector2(357, 342)
 scale = Vector2(-3, 3)
 sprite_frames = SubResource("SpriteFrames_r6a10")
+
+[node name="Sprite2D" type="Sprite2D" parent="FightHUD/Player_fight_sprite"]
+z_index = 1
+z_as_relative = false
+position = Vector2(1.33333, 7.33333)
+scale = Vector2(1, 0.5)
+texture = SubResource("GradientTexture2D_2jul0")
 
 [node name="text" type="RichTextLabel" parent="."]
 offset_left = -60.0
@@ -249,7 +280,8 @@ text = "relancer"
 stream = ExtResource("4_r14mf")
 volume_db = -20.0
 
-[node name="job" parent="." instance=ExtResource("5_y55mw")]
+[node name="job" parent="." node_paths=PackedStringArray("chomeur") instance=ExtResource("5_y55mw")]
+chomeur = NodePath("../chomeur")
 
 [node name="Plateforme" parent="." instance=ExtResource("6_p4iim")]
 position = Vector2(-23, 99)
