@@ -3,6 +3,7 @@ extends Node
 var running: bool
 @onready var music = $AudioStreamPlayer
 @onready var fight_text = $FightHUD/RichTextLabel
+var current_enemy := ""
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -53,6 +54,7 @@ func process_world(delta: float):
 
 func process_fight(delta: float):
 	#mettre les sprites à des pos fixes
+	
 	fight_text.visible_ratio += 0.05
 
 func new_game():
@@ -67,19 +69,40 @@ func new_game():
 	get_node("WorldHUD").get_node("Lifebar").update_hearts()
 	$AudioStreamPlayer.play()
 	
-func toggle_fight_mode():
-	$WorldHUD.hide()
-	$FightHUD.show()
-	Global.fight_mode = !Global.fight_mode
-	fight_text.visible_ratio = 0
+#true = fight mode, false = world mode
+func toggle_fight_mode(fight_mode: bool):
+	print("switch de mode")
+	Global.fight_mode = fight_mode
 	
-func _on_hit():
+	if(fight_mode):
+		$WorldHUD.hide()
+		$FightHUD.show()
+		set_background_opacity(0)
+		var tween_background = $CanvasLayer/Fight_Background.create_tween()
+		tween_background.set_ease(Tween.EASE_IN)
+		tween_background.tween_property($CanvasLayer/Fight_Background, "color:a", 0.5, 0.2)
+		fight_text.visible_ratio = 0
+		
+	else:
+		$WorldHUD.show()
+		$FightHUD.hide()
+		
+func set_background_opacity(alpha: float):
+	$CanvasLayer/Fight_Background.color.a = alpha
+	
+func _on_hit(enemy: Enemy):
 	#get_node("text").show()
 	#get_node("Button").show()
 	#get_node("chomeur").set_physics_process(false)
 	#get_node("job").set_physics_process(false)
+	if !Global.fight_mode:
+		$FightHUD/Enemy_fight_sprite.sprite_frames = enemy.get_node("AnimatedSprite2D").sprite_frames
+		current_enemy = enemy.get_class_name()
+		fight_text.text = "Un " + current_enemy + " sauvage apparaît !"
+		toggle_fight_mode(true)
+		
+			
 	get_node("WorldHUD").get_node("Lifebar").take_damage()
-	toggle_fight_mode()
 	
 func _on_game_over():
 	get_node("text").show()

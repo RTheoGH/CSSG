@@ -24,7 +24,8 @@ Global="*res://scripts/Global.gd"
 folder_colors={
 "res://ressources/": "green",
 "res://scenes/": "purple",
-"res://scripts/": "orange"
+"res://scripts/": "orange",
+"res://shaders/": "pink"
 }
 
 [input]

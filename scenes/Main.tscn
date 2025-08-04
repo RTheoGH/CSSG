@@ -1,18 +1,97 @@
-[gd_scene load_steps=16 format=3 uid="uid://6ueec22mi8co"]
+[gd_scene load_steps=29 format=3 uid="uid://6ueec22mi8co"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_1apkk"]
 [ext_resource type="PackedScene" uid="uid://bvc6ijsw2wpn0" path="res://scenes/UI.tscn" id="2_h4x6i"]
+[ext_resource type="Texture2D" uid="uid://g3i7o27g62t" path="res://ressources/images/studentA1.png" id="3_tcata"]
 [ext_resource type="PackedScene" uid="uid://cocwo8aq5j7pw" path="res://scenes/Player.tscn" id="4_apvqn"]
 [ext_resource type="AudioStream" uid="uid://772ggq0sx8jb" path="res://ressources/musics/music jeu test.wav" id="4_r14mf"]
+[ext_resource type="Texture2D" uid="uid://duf7ihk4yucls" path="res://ressources/images/studentA2.png" id="4_wuv6s"]
+[ext_resource type="Texture2D" uid="uid://dxtqm8ntffy5m" path="res://ressources/images/StudentAfall.png" id="5_hudx5"]
 [ext_resource type="PackedScene" uid="uid://cphd0yo8fpvb6" path="res://scenes/Job.tscn" id="5_y55mw"]
+[ext_resource type="Texture2D" uid="uid://dwe1wgd0eqp4m" path="res://ressources/images/StudentAjump.png" id="6_8tkyn"]
 [ext_resource type="PackedScene" path="res://scenes/plateforme.tscn" id="6_p4iim"]
+[ext_resource type="Texture2D" uid="uid://df5c12qe5rkj5" path="res://ressources/images/sneak.png" id="7_27ulv"]
 [ext_resource type="PackedScene" path="res://scenes/map.tscn" id="7_od2uo"]
 [ext_resource type="Script" path="res://scenes/timer.gd" id="8_it0lm"]
+[ext_resource type="Texture2D" uid="uid://cq8acad81146r" path="res://ressources/images/Studenthaut-1.png" id="8_l7gre"]
 [ext_resource type="Texture2D" uid="uid://c2jyv58nsm15a" path="res://ressources/images/goat.png" id="9_in5b8"]
+[ext_resource type="Texture2D" uid="uid://d2wjix7xlvk0p" path="res://ressources/images/Studenthaut-2.png" id="9_ivg54"]
+[ext_resource type="Texture2D" uid="uid://b5aebivgsdxlm" path="res://ressources/images/studentA_marche1.png" id="10_wy6km"]
 [ext_resource type="AudioStream" uid="uid://55ok6y3fhtdv" path="res://ressources/sounds/lutz_1.mp3" id="10_xgx00"]
+[ext_resource type="Texture2D" uid="uid://dvfvru3b5wus1" path="res://ressources/images/studentA_marche2.png" id="11_jcut0"]
 [ext_resource type="AudioStream" uid="uid://bc0ivjpkv2g6e" path="res://ressources/sounds/lutz_2.mp3" id="11_q4qov"]
+[ext_resource type="Texture2D" uid="uid://ddmk5vg0t8lfe" path="res://ressources/images/studentA_marche3.png" id="12_21pxd"]
 [ext_resource type="AudioStream" uid="uid://dd5qrqseamcyc" path="res://ressources/sounds/lutz_3.mp3" id="12_dy66s"]
 [ext_resource type="AudioStream" uid="uid://cgvpn6nqecl5u" path="res://ressources/sounds/lutz_4.mp3" id="13_2kace"]
+[ext_resource type="Texture2D" uid="uid://bmsfej5fhcbui" path="res://ressources/images/studentA_marche4.png" id="13_pnt3o"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lv3x1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r6a10"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_tcata")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wuv6s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_hudx5")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_8tkyn")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_27ulv")
+}],
+"loop": true,
+"name": &"sneak",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_l7gre")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ivg54")
+}],
+"loop": true,
+"name": &"view_top",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_wy6km")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_jcut0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_21pxd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_pnt3o")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 4.0
+}]
 
 [sub_resource type="FontFile" id="FontFile_sxdul"]
 cache/0/16/0/ascent = 0.0
@@ -108,28 +187,43 @@ zoom = Vector2(2.5, 2.5)
 
 [node name="Lifebar" parent="WorldHUD" instance=ExtResource("2_h4x6i")]
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Fight_Background" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1149.0
+offset_bottom = 647.0
+color = Color(0.141176, 0.141176, 0.141176, 0)
+
 [node name="FightHUD" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="FightHUD"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 231.0
+offset_top = 468.0
+offset_right = -284.0
+offset_bottom = -56.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.266667)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="FightHUD"]
 offset_left = 235.0
 offset_top = 472.0
 offset_right = 872.0
 offset_bottom = 596.0
-text = "	
-	Un [ennemi] sauvage apparaît !"
 
-[node name="ColorRect" type="ColorRect" parent="FightHUD/RichTextLabel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 1.0
-offset_bottom = -3.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.266667)
+[node name="Enemy_fight_sprite" type="AnimatedSprite2D" parent="FightHUD"]
+position = Vector2(771, 342)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_lv3x1")
+
+[node name="Player_fight_sprite" type="AnimatedSprite2D" parent="FightHUD"]
+texture_filter = 1
+position = Vector2(357, 342)
+scale = Vector2(-3, 3)
+sprite_frames = SubResource("SpriteFrames_r6a10")
 
 [node name="text" type="RichTextLabel" parent="."]
 offset_left = -60.0
@@ -155,8 +249,7 @@ text = "relancer"
 stream = ExtResource("4_r14mf")
 volume_db = -20.0
 
-[node name="job" parent="." node_paths=PackedStringArray("chomeur") instance=ExtResource("5_y55mw")]
-chomeur = NodePath("../chomeur")
+[node name="job" parent="." instance=ExtResource("5_y55mw")]
 
 [node name="Plateforme" parent="." instance=ExtResource("6_p4iim")]
 position = Vector2(-23, 99)

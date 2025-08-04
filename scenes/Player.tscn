@@ -96,7 +96,6 @@ script = ExtResource("1_n4xk2")
 texture_filter = 1
 position = Vector2(-1, 0)
 sprite_frames = SubResource("SpriteFrames_c0f4m")
-animation = &"sneak"
 
 [node name="Tall" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)

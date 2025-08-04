@@ -17,5 +17,6 @@ func scream():
 	$CanvasLayer/TextureRect.visible = false
 
 func _on_timeout() -> void:
-	if randi_range(1,10) == 8:
-		scream()
+	return
+	#if randi_range(1,10) == 8:
+		#scream()

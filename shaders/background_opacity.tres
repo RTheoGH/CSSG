@@ -1,0 +1,39 @@
+[gd_resource type="VisualShader" load_steps=3 format=3 uid="uid://kx1msrulrq2v"]
+
+[sub_resource type="VisualShaderNodeVec3Constant" id="VisualShaderNodeVec3Constant_ufa42"]
+output_port_for_preview = 0
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_3lbcw"]
+parameter_name = "Background_opacity"
+
+[resource]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+uniform float Background_opacity;
+
+
+
+void fragment() {
+// Vector3Constant:2
+	vec3 n_out2p0 = vec3(0.000000, 0.000000, 0.000000);
+
+
+// FloatParameter:3
+	float n_out3p0 = Background_opacity;
+
+
+// Output:0
+	COLOR.rgb = n_out2p0;
+	COLOR.a = n_out3p0;
+
+
+}
+"
+mode = 1
+flags/light_only = false
+nodes/fragment/2/node = SubResource("VisualShaderNodeVec3Constant_ufa42")
+nodes/fragment/2/position = Vector2(-200, 140)
+nodes/fragment/3/node = SubResource("VisualShaderNodeFloatParameter_3lbcw")
+nodes/fragment/3/position = Vector2(-57.8824, 441.02)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 3, 0, 0, 1)

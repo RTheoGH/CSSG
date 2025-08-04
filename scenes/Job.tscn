@@ -1,7 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://cphd0yo8fpvb6"]
+[gd_scene load_steps=5 format=3 uid="uid://cphd0yo8fpvb6"]
 
 [ext_resource type="Script" path="res://scripts/job.gd" id="1_ywle1"]
 [ext_resource type="Texture2D" uid="uid://bkuiqjfabbr45" path="res://ressources/images/job-1.png" id="2_mre3a"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_exwro"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mre3a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_njjev"]
 size = Vector2(32, 56)
@@ -11,11 +22,11 @@ collision_layer = 8
 collision_mask = 8
 script = ExtResource("1_ywle1")
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, 1.90735e-06)
 scale = Vector2(1.07641, 1.42628)
-texture = ExtResource("2_mre3a")
+sprite_frames = SubResource("SpriteFrames_exwro")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_njjev")
