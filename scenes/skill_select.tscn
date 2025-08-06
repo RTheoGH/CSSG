@@ -1,0 +1,78 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3t25jf77014j"]
+
+[ext_resource type="Texture2D" uid="uid://c2jyv58nsm15a" path="res://ressources/images/goat.png" id="1_n7nyl"]
+[ext_resource type="Script" path="res://scenes/skill_select.gd" id="1_xumfo"]
+
+[node name="SkillSelect" type="ColorRect"]
+offset_right = 1152.0
+offset_bottom = 153.0
+color = Color(0, 0, 0, 0.462745)
+script = ExtResource("1_xumfo")
+
+[node name="Skill1" type="Button" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 572.0
+offset_bottom = 72.0
+text = "-"
+
+[node name="TextureRect" type="TextureRect" parent="Skill1"]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 6.0
+offset_right = 324.0
+offset_bottom = 278.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_n7nyl")
+
+[node name="Skill2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 81.0
+offset_right = 571.0
+offset_bottom = 148.0
+text = "-"
+
+[node name="TextureRect" type="TextureRect" parent="Skill2"]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 6.0
+offset_right = 324.0
+offset_bottom = 278.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_n7nyl")
+
+[node name="Skill3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 580.0
+offset_top = 5.0
+offset_right = 1147.0
+offset_bottom = 72.0
+text = "-"
+
+[node name="TextureRect" type="TextureRect" parent="Skill3"]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 6.0
+offset_right = 324.0
+offset_bottom = 278.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_n7nyl")
+
+[node name="Skill4" type="Button" parent="."]
+layout_mode = 0
+offset_left = 580.0
+offset_top = 81.0
+offset_right = 1147.0
+offset_bottom = 148.0
+text = "-"
+
+[node name="TextureRect" type="TextureRect" parent="Skill4"]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 6.0
+offset_right = 324.0
+offset_bottom = 278.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_n7nyl")

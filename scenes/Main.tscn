@@ -1,8 +1,9 @@
-[gd_scene load_steps=32 format=3 uid="uid://6ueec22mi8co"]
+[gd_scene load_steps=38 format=3 uid="uid://6ueec22mi8co"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_1apkk"]
 [ext_resource type="PackedScene" uid="uid://bvc6ijsw2wpn0" path="res://scenes/UI.tscn" id="2_h4x6i"]
 [ext_resource type="Texture2D" uid="uid://b7g7sfkus2msy" path="res://ressources/images/temp_fond-1.png.png" id="3_anvqx"]
+[ext_resource type="Shader" uid="uid://kx1msrulrq2v" path="res://shaders/background_opacity.tres" id="3_jqtgi"]
 [ext_resource type="Texture2D" uid="uid://g3i7o27g62t" path="res://ressources/images/studentA1.png" id="3_tcata"]
 [ext_resource type="PackedScene" uid="uid://cocwo8aq5j7pw" path="res://scenes/Player.tscn" id="4_apvqn"]
 [ext_resource type="AudioStream" uid="uid://772ggq0sx8jb" path="res://ressources/musics/music jeu test.wav" id="4_r14mf"]
@@ -10,9 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://dxtqm8ntffy5m" path="res://ressources/images/StudentAfall.png" id="5_hudx5"]
 [ext_resource type="PackedScene" uid="uid://cphd0yo8fpvb6" path="res://scenes/Job.tscn" id="5_y55mw"]
 [ext_resource type="Texture2D" uid="uid://dwe1wgd0eqp4m" path="res://ressources/images/StudentAjump.png" id="6_8tkyn"]
-[ext_resource type="PackedScene" uid="uid://iqcu8iqk2bde" path="res://scenes/plateforme.tscn" id="6_p4iim"]
+[ext_resource type="PackedScene" path="res://scenes/plateforme.tscn" id="6_p4iim"]
 [ext_resource type="Texture2D" uid="uid://df5c12qe5rkj5" path="res://ressources/images/sneak.png" id="7_27ulv"]
-[ext_resource type="PackedScene" uid="uid://bmqjuoupt4vqd" path="res://scenes/map.tscn" id="7_od2uo"]
+[ext_resource type="PackedScene" path="res://scenes/map.tscn" id="7_od2uo"]
 [ext_resource type="Script" path="res://scenes/timer.gd" id="8_it0lm"]
 [ext_resource type="Texture2D" uid="uid://cq8acad81146r" path="res://ressources/images/Studenthaut-1.png" id="8_l7gre"]
 [ext_resource type="Texture2D" uid="uid://c2jyv58nsm15a" path="res://ressources/images/goat.png" id="9_in5b8"]
@@ -25,6 +26,12 @@
 [ext_resource type="AudioStream" uid="uid://dd5qrqseamcyc" path="res://ressources/sounds/lutz_3.mp3" id="12_dy66s"]
 [ext_resource type="AudioStream" uid="uid://cgvpn6nqecl5u" path="res://ressources/sounds/lutz_4.mp3" id="13_2kace"]
 [ext_resource type="Texture2D" uid="uid://bmsfej5fhcbui" path="res://ressources/images/studentA_marche4.png" id="13_pnt3o"]
+[ext_resource type="Script" path="res://scripts/skills/skill.gd" id="18_c4rqx"]
+[ext_resource type="Script" path="res://scripts/skills/fireball.gd" id="19_l33xc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2exay"]
+shader = ExtResource("3_jqtgi")
+shader_parameter/Background_luminosity = 0.75
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lv3x1"]
 
@@ -183,6 +190,12 @@ cache/0/15/0/underline_position = 0.0
 cache/0/15/0/underline_thickness = 0.0
 cache/0/15/0/scale = 1.0
 
+[sub_resource type="Resource" id="Resource_s3pkg"]
+script = ExtResource("19_l33xc")
+
+[sub_resource type="Resource" id="Resource_xldig"]
+script = ExtResource("18_c4rqx")
+
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hq08k"]
 streams_count = 4
 stream_0/stream = ExtResource("10_xgx00")
@@ -209,32 +222,31 @@ color = Color(0.141176, 0.141176, 0.141176, 0)
 
 [node name="FightHUD" type="CanvasLayer" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="FightHUD"]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 231.0
-offset_top = 468.0
-offset_right = -284.0
-offset_bottom = -56.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.266667)
-
 [node name="TextureRect" type="TextureRect" parent="FightHUD"]
 texture_filter = 1
+material = SubResource("ShaderMaterial_2exay")
 offset_left = -5.0
 offset_top = -269.0
 offset_right = 1152.0
 offset_bottom = 888.0
 texture = ExtResource("3_anvqx")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="FightHUD"]
-offset_left = 235.0
-offset_top = 472.0
-offset_right = 872.0
-offset_bottom = 596.0
+[node name="ColorRect" type="ColorRect" parent="FightHUD"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 495.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.462745)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="FightHUD/ColorRect"]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 19.0
+offset_right = 1094.0
+offset_bottom = 133.0
+text = "Un job sauvage apparait"
 
 [node name="Enemy_fight_sprite" type="AnimatedSprite2D" parent="FightHUD"]
 texture_filter = 1
@@ -275,6 +287,7 @@ offset_bottom = 78.0
 text = "relancer"
 
 [node name="chomeur" parent="." instance=ExtResource("4_apvqn")]
+skills = Array[ExtResource("18_c4rqx")]([SubResource("Resource_s3pkg"), SubResource("Resource_xldig")])
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_r14mf")

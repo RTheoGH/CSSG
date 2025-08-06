@@ -1,5 +1,5 @@
 class_name Enemy
-extends CharacterBody2D
+extends Character
 
 const SPEED = 150.0
 const JUMP_VELOCITY = -400.0

@@ -2,7 +2,7 @@ extends Node
 
 var running: bool
 @onready var music = $AudioStreamPlayer
-@onready var fight_text = $FightHUD/RichTextLabel
+@onready var fight_text = $FightHUD/ColorRect/RichTextLabel
 var current_enemy := ""
 
 # Called when the node enters the scene tree for the first time.
@@ -53,9 +53,12 @@ func process_world(delta: float):
 		cam.global_position = cam.global_position.move_toward(target_pos,speed*delta)
 
 func process_fight(delta: float):
-	#mettre les sprites à des pos fixes
-	
 	fight_text.visible_ratio += 0.05
+	if Input.is_action_just_pressed("ui_accept"):
+		$FightHUD/ColorRect.hide()
+		var skills_hud := SkillSelect.new($chomeur.skills)
+		$FightHUD.add_child(skills_hud)
+		
 
 func new_game():
 	get_node("text").hide()
@@ -82,6 +85,8 @@ func toggle_fight_mode(fight_mode: bool):
 		tween_background.set_ease(Tween.EASE_IN)
 		tween_background.tween_property($CanvasLayer/Fight_Background, "color:a", 0.5, 0.2)
 		fight_text.visible_ratio = 0
+		$FightHUD/Enemy_fight_sprite.play("default")
+		$FightHUD/Player_fight_sprite.play("default")
 		
 	else:
 		$WorldHUD.show()
