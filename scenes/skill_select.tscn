@@ -4,8 +4,10 @@
 [ext_resource type="Script" path="res://scenes/skill_select.gd" id="1_xumfo"]
 
 [node name="SkillSelect" type="ColorRect"]
-offset_right = 1152.0
-offset_bottom = 153.0
+offset_left = -2.0
+offset_top = 489.0
+offset_right = 1150.0
+offset_bottom = 642.0
 color = Color(0, 0, 0, 0.462745)
 script = ExtResource("1_xumfo")
 

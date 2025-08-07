@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://6ueec22mi8co"]
+[gd_scene load_steps=40 format=3 uid="uid://6ueec22mi8co"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_1apkk"]
 [ext_resource type="PackedScene" uid="uid://bvc6ijsw2wpn0" path="res://scenes/UI.tscn" id="2_h4x6i"]
@@ -11,9 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://dxtqm8ntffy5m" path="res://ressources/images/StudentAfall.png" id="5_hudx5"]
 [ext_resource type="PackedScene" uid="uid://cphd0yo8fpvb6" path="res://scenes/Job.tscn" id="5_y55mw"]
 [ext_resource type="Texture2D" uid="uid://dwe1wgd0eqp4m" path="res://ressources/images/StudentAjump.png" id="6_8tkyn"]
-[ext_resource type="PackedScene" path="res://scenes/plateforme.tscn" id="6_p4iim"]
+[ext_resource type="PackedScene" uid="uid://iqcu8iqk2bde" path="res://scenes/plateforme.tscn" id="6_p4iim"]
 [ext_resource type="Texture2D" uid="uid://df5c12qe5rkj5" path="res://ressources/images/sneak.png" id="7_27ulv"]
-[ext_resource type="PackedScene" path="res://scenes/map.tscn" id="7_od2uo"]
+[ext_resource type="PackedScene" uid="uid://bmqjuoupt4vqd" path="res://scenes/map.tscn" id="7_od2uo"]
 [ext_resource type="Script" path="res://scenes/timer.gd" id="8_it0lm"]
 [ext_resource type="Texture2D" uid="uid://cq8acad81146r" path="res://ressources/images/Studenthaut-1.png" id="8_l7gre"]
 [ext_resource type="Texture2D" uid="uid://c2jyv58nsm15a" path="res://ressources/images/goat.png" id="9_in5b8"]
@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://bmsfej5fhcbui" path="res://ressources/images/studentA_marche4.png" id="13_pnt3o"]
 [ext_resource type="Script" path="res://scripts/skills/skill.gd" id="18_c4rqx"]
 [ext_resource type="Script" path="res://scripts/skills/fireball.gd" id="19_l33xc"]
+[ext_resource type="Script" path="res://scripts/skills/pm.gd" id="19_nhipu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2exay"]
 shader = ExtResource("3_jqtgi")
@@ -196,6 +197,9 @@ script = ExtResource("19_l33xc")
 [sub_resource type="Resource" id="Resource_xldig"]
 script = ExtResource("18_c4rqx")
 
+[sub_resource type="Resource" id="Resource_kkyj2"]
+script = ExtResource("19_nhipu")
+
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hq08k"]
 streams_count = 4
 stream_0/stream = ExtResource("10_xgx00")
@@ -221,6 +225,7 @@ offset_bottom = 647.0
 color = Color(0.141176, 0.141176, 0.141176, 0)
 
 [node name="FightHUD" type="CanvasLayer" parent="."]
+follow_viewport_scale = 0.25
 
 [node name="TextureRect" type="TextureRect" parent="FightHUD"]
 texture_filter = 1
@@ -287,7 +292,7 @@ offset_bottom = 78.0
 text = "relancer"
 
 [node name="chomeur" parent="." instance=ExtResource("4_apvqn")]
-skills = Array[ExtResource("18_c4rqx")]([SubResource("Resource_s3pkg"), SubResource("Resource_xldig")])
+skills = Array[ExtResource("18_c4rqx")]([SubResource("Resource_s3pkg"), SubResource("Resource_xldig"), SubResource("Resource_kkyj2")])
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_r14mf")

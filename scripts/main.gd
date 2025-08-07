@@ -56,10 +56,14 @@ func process_fight(delta: float):
 	fight_text.visible_ratio += 0.05
 	if Input.is_action_just_pressed("ui_accept"):
 		$FightHUD/ColorRect.hide()
-		var skills_hud := SkillSelect.new($chomeur.skills)
-		$FightHUD.add_child(skills_hud)
+		var skills_hud := preload("res://scenes/skill_select.tscn")
+		#var skills_hud := SkillSelect.($chomeur.skills)
+		#skills_hud.name = "SkillSelect"
+		print(get_node("chomeur").skills)
+		var apagnan = skills_hud.instantiate()
+		$FightHUD.add_child(apagnan)
+		apagnan.get_chomeur_skills(get_node("chomeur").skills)
 		
-
 func new_game():
 	get_node("text").hide()
 	get_node("Button").hide()
