@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://hbfip2tghpob"]
+[gd_scene load_steps=41 format=3 uid="uid://hbfip2tghpob"]
 
 [ext_resource type="Shader" uid="uid://kx1msrulrq2v" path="res://shaders/background_opacity.tres" id="1_q6upu"]
 [ext_resource type="Texture2D" uid="uid://b7g7sfkus2msy" path="res://ressources/images/temp_fond-1.png.png" id="2_agewj"]
@@ -9,7 +9,7 @@
 [ext_resource type="Shader" uid="uid://dbdjyq2u3iwi6" path="res://shaders/wing.tres" id="5_nbuoa"]
 [ext_resource type="Texture2D" uid="uid://dxtqm8ntffy5m" path="res://ressources/images/StudentAfall.png" id="5_r0uqx"]
 [ext_resource type="Texture2D" uid="uid://c2jyv58nsm15a" path="res://ressources/images/goat.png" id="5_vc2lj"]
-[ext_resource type="Shader" uid="uid://ckdkrbdh5iajy" path="res://scenes/font.tres" id="6_ggg4q"]
+[ext_resource type="FontFile" uid="uid://dwkpjj0o5bk8y" path="res://ressources/fonts/Xolonium-Regular.ttf" id="6_07vp5"]
 [ext_resource type="Texture2D" uid="uid://dwe1wgd0eqp4m" path="res://ressources/images/StudentAjump.png" id="6_mwgbg"]
 [ext_resource type="Texture2D" uid="uid://df5c12qe5rkj5" path="res://ressources/images/sneak.png" id="7_urfml"]
 [ext_resource type="Texture2D" uid="uid://cq8acad81146r" path="res://ressources/images/Studenthaut-1.png" id="8_2sjw8"]
@@ -36,8 +36,14 @@ shader = ExtResource("5_nbuoa")
 shader_parameter/ColorParameter = Color(1, 0, 0, 1)
 shader_parameter/Texture2DParameter = SubResource("GradientTexture2D_a46vb")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ak542"]
-shader = ExtResource("6_ggg4q")
+[sub_resource type="Gradient" id="Gradient_dse18"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vk162"]
+gradient = SubResource("Gradient_dse18")
+fill = 1
+fill_from = Vector2(0.5, 0.555046)
+fill_to = Vector2(0.770642, 0.366972)
 
 [sub_resource type="Gradient" id="Gradient_prr45"]
 offsets = PackedFloat32Array(0, 0.411765, 1)
@@ -77,17 +83,16 @@ shader = ExtResource("5_nbuoa")
 shader_parameter/ColorParameter = Color(0.0375274, 0.275382, 0.999993, 1)
 shader_parameter/Texture2DParameter = SubResource("GradientTexture2D_3qyje")
 
-[sub_resource type="Gradient" id="Gradient_gr0g1"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0.116883, 0.5, 0.8)
-colors = PackedColorArray(0.0649351, 0.0649351, 0.0649351, 1, 1, 1, 1, 1, 0, 0, 0, 1)
-metadata/_snap_enabled = true
+[sub_resource type="Gradient" id="Gradient_s0qjy"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.506494, 0.75974)
+colors = PackedColorArray(1, 1, 1, 0.419608, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_mr05u"]
-gradient = SubResource("Gradient_gr0g1")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tga2w"]
+gradient = SubResource("Gradient_s0qjy")
 fill = 1
-fill_from = Vector2(0.490826, 0.527523)
-fill_to = Vector2(0.853211, 0.56422)
+fill_from = Vector2(0.486239, 0.568807)
+fill_to = Vector2(0.90367, 0.0825688)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_klneh"]
 
@@ -172,6 +177,7 @@ metadata/_snap_enabled = true
 [node name="CanvasLayer" type="CanvasLayer"]
 
 [node name="TextureRect" type="TextureRect" parent="."]
+z_index = -2
 texture_filter = 1
 material = SubResource("ShaderMaterial_drw6o")
 offset_left = -5.0
@@ -181,6 +187,7 @@ offset_bottom = 888.0
 texture = ExtResource("2_agewj")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -195,12 +202,16 @@ offset_left = 51.0
 offset_top = 19.0
 offset_right = 1094.0
 offset_bottom = 133.0
+theme_override_fonts/normal_font = ExtResource("6_07vp5")
+theme_override_font_sizes/normal_font_size = 20
 text = "Un job sauvage apparait."
 
 [node name="main_select" type="Node2D" parent="ColorRect"]
+position = Vector2(68, -4)
 script = ExtResource("3_fue0e")
 
 [node name="attack" type="Button" parent="ColorRect/main_select"]
+z_index = 1
 offset_left = 342.0
 offset_right = 523.0
 offset_bottom = 67.0
@@ -208,6 +219,7 @@ flat = true
 metadata/_edit_use_anchors_ = true
 
 [node name="attack_sp" type="Sprite2D" parent="ColorRect/main_select/attack"]
+z_index = 1
 texture_filter = 1
 material = SubResource("ShaderMaterial_f2hws")
 position = Vector2(78.875, 33.9375)
@@ -216,15 +228,27 @@ scale = Vector2(4.445, -4.383)
 texture = ExtResource("4_flrxx")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/main_select/attack"]
-material = SubResource("ShaderMaterial_ak542")
+z_index = 1
 layout_mode = 0
-offset_right = 150.0
-offset_bottom = 69.0
+offset_left = 34.0
+offset_top = 24.0
+offset_right = 127.0
+offset_bottom = 49.0
+mouse_filter = 1
+theme_override_fonts/normal_font = ExtResource("6_07vp5")
+theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "
-[center]FIGHT"
+text = "[color=black]ATTACK"
+scroll_active = false
+
+[node name="Sprite2D" type="Sprite2D" parent="ColorRect/main_select/attack"]
+position = Vector2(73.9932, 43.9921)
+rotation = 0.127409
+scale = Vector2(3.21402, 1.27931)
+texture = SubResource("GradientTexture2D_vk162")
 
 [node name="skills" type="Button" parent="ColorRect/main_select"]
+z_index = 1
 offset_left = 571.0
 offset_top = -1.0
 offset_right = 741.0
@@ -232,21 +256,44 @@ offset_bottom = 72.0
 flat = true
 
 [node name="skills_sp" type="Sprite2D" parent="ColorRect/main_select/skills"]
+z_index = 1
 texture_filter = 1
 material = SubResource("ShaderMaterial_8lcf3")
 position = Vector2(78.875, 33.9375)
 scale = Vector2(4.44531, 4.38281)
 texture = ExtResource("4_flrxx")
 
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/main_select/skills"]
+z_index = 1
+layout_mode = 0
+offset_left = 28.0
+offset_top = 26.0
+offset_right = 119.0
+offset_bottom = 52.0
+mouse_filter = 1
+theme_override_fonts/normal_font = ExtResource("6_07vp5")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[color=black]SKILLS"
+scroll_active = false
+
+[node name="Sprite2D" type="Sprite2D" parent="ColorRect/main_select/skills"]
+position = Vector2(80.3337, 45.327)
+rotation = -0.232129
+scale = Vector2(3.39725, 1.36548)
+texture = SubResource("GradientTexture2D_vk162")
+
 [node name="items" type="Button" parent="ColorRect/main_select"]
-offset_left = 382.0
+z_index = 1
+offset_left = 379.0
 offset_top = 81.0
-offset_right = 563.0
+offset_right = 560.0
 offset_bottom = 148.0
 text = "ITEMS"
 flat = true
 
 [node name="items_sp" type="Sprite2D" parent="ColorRect/main_select/items"]
+z_index = 1
 texture_filter = 1
 material = SubResource("ShaderMaterial_e4ndw")
 position = Vector2(78.875, 33.9375)
@@ -254,15 +301,37 @@ rotation = -3.14159
 scale = Vector2(4.445, 4.383)
 texture = ExtResource("4_flrxx")
 
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/main_select/items"]
+z_index = 1
+layout_mode = 0
+offset_left = 52.0
+offset_top = 13.0
+offset_right = 124.0
+offset_bottom = 39.0
+mouse_filter = 1
+theme_override_fonts/normal_font = ExtResource("6_07vp5")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[color=black]ITEMS"
+scroll_active = false
+
+[node name="Sprite2D" type="Sprite2D" parent="ColorRect/main_select/items"]
+position = Vector2(74.8993, 47.825)
+rotation = -0.232129
+scale = Vector2(3.21402, 1.40239)
+texture = SubResource("GradientTexture2D_vk162")
+
 [node name="leave" type="Button" parent="ColorRect/main_select"]
-offset_left = 535.0
+z_index = 1
+offset_left = 532.0
 offset_top = 81.0
-offset_right = 716.0
+offset_right = 713.0
 offset_bottom = 148.0
 text = "LEAVE"
 flat = true
 
 [node name="leave_sp" type="Sprite2D" parent="ColorRect/main_select/leave"]
+z_index = 1
 texture_filter = 1
 material = SubResource("ShaderMaterial_4u18x")
 position = Vector2(78.875, 33.9375)
@@ -270,7 +339,28 @@ rotation = -3.14159
 scale = Vector2(-4.445, 4.383)
 texture = ExtResource("4_flrxx")
 
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/main_select/leave"]
+z_index = 1
+layout_mode = 0
+offset_left = 27.0
+offset_top = 12.0
+offset_right = 115.0
+offset_bottom = 38.0
+mouse_filter = 1
+theme_override_fonts/normal_font = ExtResource("6_07vp5")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[color=black]LEAVE"
+scroll_active = false
+
+[node name="Sprite2D" type="Sprite2D" parent="ColorRect/main_select/leave"]
+position = Vector2(73.9932, 43.9921)
+rotation = 0.127409
+scale = Vector2(3.21402, 1.27931)
+texture = SubResource("GradientTexture2D_vk162")
+
 [node name="Button" type="Button" parent="ColorRect/main_select"]
+z_index = 1
 offset_left = 500.0
 offset_top = -3.0
 offset_right = 572.0
@@ -282,6 +372,12 @@ flat = true
 position = Vector2(35, 37)
 scale = Vector2(0.269828, 0.277573)
 texture = ExtResource("5_vc2lj")
+
+[node name="Sprite2D" type="Sprite2D" parent="ColorRect/main_select"]
+visible = false
+position = Vector2(526.75, 50)
+scale = Vector2(6.53906, 3.04688)
+texture = SubResource("GradientTexture2D_tga2w")
 
 [node name="SkillSelect" parent="ColorRect" instance=ExtResource("14_h5ilx")]
 visible = false
@@ -300,10 +396,29 @@ anchor_top = 0.5
 anchor_right = 0.996
 anchor_bottom = 0.967
 offset_left = 0.18396
-offset_top = -0.5
-offset_right = -0.39209
+offset_top = -58.5
+offset_right = -0.391968
 offset_bottom = 0.048996
-icon = SubResource("GradientTexture2D_mr05u")
+flat = true
+
+[node name="skills_sp" type="Sprite2D" parent="ColorRect/back"]
+texture_filter = 1
+position = Vector2(38, 60)
+rotation = -1.5708
+scale = Vector2(4.44531, 4.38281)
+texture = ExtResource("4_flrxx")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/back"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 50.0
+offset_right = 80.0
+offset_bottom = 76.0
+mouse_filter = 1
+theme_override_fonts/normal_font = ExtResource("6_07vp5")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[color=black]BACK"
 
 [node name="Enemy_fight_sprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -330,8 +445,16 @@ texture = SubResource("GradientTexture2D_4alwd")
 offset_right = 8.0
 offset_bottom = 8.0
 
+[connection signal="mouse_entered" from="ColorRect/main_select/attack" to="ColorRect/main_select" method="_on_attack_mouse_entered"]
+[connection signal="mouse_exited" from="ColorRect/main_select/attack" to="ColorRect/main_select" method="_on_attack_mouse_exited"]
 [connection signal="pressed" from="ColorRect/main_select/attack" to="ColorRect/main_select" method="_on_attack_pressed"]
+[connection signal="mouse_entered" from="ColorRect/main_select/skills" to="ColorRect/main_select" method="_on_skills_mouse_entered"]
+[connection signal="mouse_exited" from="ColorRect/main_select/skills" to="ColorRect/main_select" method="_on_skills_mouse_exited"]
 [connection signal="pressed" from="ColorRect/main_select/skills" to="ColorRect/main_select" method="_on_skills_pressed"]
+[connection signal="mouse_entered" from="ColorRect/main_select/items" to="ColorRect/main_select" method="_on_items_mouse_entered"]
+[connection signal="mouse_exited" from="ColorRect/main_select/items" to="ColorRect/main_select" method="_on_items_mouse_exited"]
 [connection signal="pressed" from="ColorRect/main_select/items" to="ColorRect/main_select" method="_on_items_pressed"]
+[connection signal="mouse_entered" from="ColorRect/main_select/leave" to="ColorRect/main_select" method="_on_leave_mouse_entered"]
+[connection signal="mouse_exited" from="ColorRect/main_select/leave" to="ColorRect/main_select" method="_on_leave_mouse_exited"]
 [connection signal="pressed" from="ColorRect/main_select/leave" to="ColorRect/main_select" method="_on_leave_pressed"]
 [connection signal="pressed" from="ColorRect/back" to="ColorRect/main_select" method="_on_back_pressed"]

@@ -12,6 +12,7 @@ func _ready() -> void:
 	skills = get_parent().get_node("SkillSelect")
 	chomeur = get_parent().get_parent().get_parent().get_node("chomeur")
 	back = get_parent().get_node("back")
+	self.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -48,3 +49,27 @@ func _on_back_pressed() -> void:
 		boite_diag.hide()
 		back.hide()
 		self.show()
+
+func _on_attack_mouse_entered() -> void:
+	get_node("attack/attack_sp").texture = load("res://ressources/images/Sprite_bouton_2.png")
+	
+func _on_attack_mouse_exited() -> void:
+	get_node("attack/attack_sp").texture = load("res://ressources/images/Sprite_bouton.png")
+
+func _on_skills_mouse_entered() -> void:
+	get_node("skills/skills_sp").texture = load("res://ressources/images/Sprite_bouton_2.png")
+
+func _on_skills_mouse_exited() -> void:
+	get_node("skills/skills_sp").texture = load("res://ressources/images/Sprite_bouton.png")
+
+func _on_items_mouse_entered() -> void:
+	get_node("items/items_sp").texture = load("res://ressources/images/Sprite_bouton_2.png")
+
+func _on_items_mouse_exited() -> void:
+	get_node("items/items_sp").texture = load("res://ressources/images/Sprite_bouton.png")
+
+func _on_leave_mouse_entered() -> void:
+	get_node("leave/leave_sp").texture = load("res://ressources/images/Sprite_bouton_2.png")
+
+func _on_leave_mouse_exited() -> void:
+	get_node("leave/leave_sp").texture = load("res://ressources/images/Sprite_bouton.png")
