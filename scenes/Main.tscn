@@ -1,118 +1,22 @@
-[gd_scene load_steps=40 format=3 uid="uid://6ueec22mi8co"]
+[gd_scene load_steps=23 format=3 uid="uid://6ueec22mi8co"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_1apkk"]
 [ext_resource type="PackedScene" uid="uid://bvc6ijsw2wpn0" path="res://scenes/UI.tscn" id="2_h4x6i"]
-[ext_resource type="Texture2D" uid="uid://b7g7sfkus2msy" path="res://ressources/images/temp_fond-1.png.png" id="3_anvqx"]
-[ext_resource type="Shader" uid="uid://kx1msrulrq2v" path="res://shaders/background_opacity.tres" id="3_jqtgi"]
-[ext_resource type="Texture2D" uid="uid://g3i7o27g62t" path="res://ressources/images/studentA1.png" id="3_tcata"]
+[ext_resource type="PackedScene" uid="uid://hbfip2tghpob" path="res://scenes/Battle.tscn" id="3_axrbh"]
 [ext_resource type="PackedScene" uid="uid://cocwo8aq5j7pw" path="res://scenes/Player.tscn" id="4_apvqn"]
 [ext_resource type="AudioStream" uid="uid://772ggq0sx8jb" path="res://ressources/musics/music jeu test.wav" id="4_r14mf"]
-[ext_resource type="Texture2D" uid="uid://duf7ihk4yucls" path="res://ressources/images/studentA2.png" id="4_wuv6s"]
-[ext_resource type="Texture2D" uid="uid://dxtqm8ntffy5m" path="res://ressources/images/StudentAfall.png" id="5_hudx5"]
 [ext_resource type="PackedScene" uid="uid://cphd0yo8fpvb6" path="res://scenes/Job.tscn" id="5_y55mw"]
-[ext_resource type="Texture2D" uid="uid://dwe1wgd0eqp4m" path="res://ressources/images/StudentAjump.png" id="6_8tkyn"]
-[ext_resource type="PackedScene" path="res://scenes/plateforme.tscn" id="6_p4iim"]
-[ext_resource type="Texture2D" uid="uid://df5c12qe5rkj5" path="res://ressources/images/sneak.png" id="7_27ulv"]
-[ext_resource type="PackedScene" path="res://scenes/map.tscn" id="7_od2uo"]
-[ext_resource type="Script" path="res://scenes/timer.gd" id="8_it0lm"]
-[ext_resource type="Texture2D" uid="uid://cq8acad81146r" path="res://ressources/images/Studenthaut-1.png" id="8_l7gre"]
+[ext_resource type="PackedScene" uid="uid://iqcu8iqk2bde" path="res://scenes/plateforme.tscn" id="6_p4iim"]
+[ext_resource type="PackedScene" uid="uid://bmqjuoupt4vqd" path="res://scenes/map.tscn" id="7_od2uo"]
+[ext_resource type="Script" path="res://scripts/timer.gd" id="8_it0lm"]
 [ext_resource type="Texture2D" uid="uid://c2jyv58nsm15a" path="res://ressources/images/goat.png" id="9_in5b8"]
-[ext_resource type="Texture2D" uid="uid://d2wjix7xlvk0p" path="res://ressources/images/Studenthaut-2.png" id="9_ivg54"]
-[ext_resource type="Texture2D" uid="uid://b5aebivgsdxlm" path="res://ressources/images/studentA_marche1.png" id="10_wy6km"]
 [ext_resource type="AudioStream" uid="uid://55ok6y3fhtdv" path="res://ressources/sounds/lutz_1.mp3" id="10_xgx00"]
-[ext_resource type="Texture2D" uid="uid://dvfvru3b5wus1" path="res://ressources/images/studentA_marche2.png" id="11_jcut0"]
 [ext_resource type="AudioStream" uid="uid://bc0ivjpkv2g6e" path="res://ressources/sounds/lutz_2.mp3" id="11_q4qov"]
-[ext_resource type="Texture2D" uid="uid://ddmk5vg0t8lfe" path="res://ressources/images/studentA_marche3.png" id="12_21pxd"]
 [ext_resource type="AudioStream" uid="uid://dd5qrqseamcyc" path="res://ressources/sounds/lutz_3.mp3" id="12_dy66s"]
 [ext_resource type="AudioStream" uid="uid://cgvpn6nqecl5u" path="res://ressources/sounds/lutz_4.mp3" id="13_2kace"]
-[ext_resource type="Texture2D" uid="uid://bmsfej5fhcbui" path="res://ressources/images/studentA_marche4.png" id="13_pnt3o"]
 [ext_resource type="Script" path="res://scripts/skills/skill.gd" id="18_c4rqx"]
 [ext_resource type="Script" path="res://scripts/skills/fireball.gd" id="19_l33xc"]
 [ext_resource type="Script" path="res://scripts/skills/pm.gd" id="19_nhipu"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2exay"]
-shader = ExtResource("3_jqtgi")
-shader_parameter/Background_luminosity = 0.75
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_lv3x1"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_r6a10"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_tcata")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_wuv6s")
-}],
-"loop": true,
-"name": &"default",
-"speed": 2.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("5_hudx5")
-}],
-"loop": true,
-"name": &"fall",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_8tkyn")
-}],
-"loop": true,
-"name": &"jump",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("7_27ulv")
-}],
-"loop": true,
-"name": &"sneak",
-"speed": 1.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("8_l7gre")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_ivg54")
-}],
-"loop": true,
-"name": &"view_top",
-"speed": 2.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("10_wy6km")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_jcut0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_21pxd")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_pnt3o")
-}],
-"loop": true,
-"name": &"walk",
-"speed": 4.0
-}]
-
-[sub_resource type="Gradient" id="Gradient_deyqw"]
-interpolation_mode = 2
-offsets = PackedFloat32Array(0.175325, 0.337662)
-colors = PackedColorArray(0, 0, 0, 0.545098, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_2jul0"]
-gradient = SubResource("Gradient_deyqw")
-fill = 1
-fill_from = Vector2(0.5, 0.7)
-fill_to = Vector2(0.5, 0.3)
-metadata/_snap_enabled = true
 
 [sub_resource type="FontFile" id="FontFile_sxdul"]
 cache/0/16/0/ascent = 0.0
@@ -220,58 +124,12 @@ zoom = Vector2(2.5, 2.5)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Fight_Background" type="ColorRect" parent="CanvasLayer"]
+visible = false
 offset_right = 1149.0
 offset_bottom = 647.0
 color = Color(0.141176, 0.141176, 0.141176, 0)
 
-[node name="FightHUD" type="CanvasLayer" parent="."]
-follow_viewport_scale = 0.25
-
-[node name="TextureRect" type="TextureRect" parent="FightHUD"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_2exay")
-offset_left = -5.0
-offset_top = -269.0
-offset_right = 1152.0
-offset_bottom = 888.0
-texture = ExtResource("3_anvqx")
-
-[node name="ColorRect" type="ColorRect" parent="FightHUD"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 495.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.462745)
-
-[node name="RichTextLabel" type="RichTextLabel" parent="FightHUD/ColorRect"]
-layout_mode = 0
-offset_left = 51.0
-offset_top = 19.0
-offset_right = 1094.0
-offset_bottom = 133.0
-text = "Un job sauvage apparait"
-
-[node name="Enemy_fight_sprite" type="AnimatedSprite2D" parent="FightHUD"]
-texture_filter = 1
-position = Vector2(771, 342)
-scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_lv3x1")
-
-[node name="Player_fight_sprite" type="AnimatedSprite2D" parent="FightHUD"]
-z_index = 2
-texture_filter = 1
-position = Vector2(357, 342)
-scale = Vector2(-3, 3)
-sprite_frames = SubResource("SpriteFrames_r6a10")
-
-[node name="Sprite2D" type="Sprite2D" parent="FightHUD/Player_fight_sprite"]
-z_index = 1
-z_as_relative = false
-position = Vector2(1.33333, 7.33333)
-scale = Vector2(1, 0.5)
-texture = SubResource("GradientTexture2D_2jul0")
+[node name="FightHUD" parent="." instance=ExtResource("3_axrbh")]
 
 [node name="text" type="RichTextLabel" parent="."]
 offset_left = -60.0

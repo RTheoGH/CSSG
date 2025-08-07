@@ -1,0 +1,233 @@
+[gd_scene load_steps=23 format=3 uid="uid://hbfip2tghpob"]
+
+[ext_resource type="Shader" uid="uid://kx1msrulrq2v" path="res://shaders/background_opacity.tres" id="1_q6upu"]
+[ext_resource type="Texture2D" uid="uid://b7g7sfkus2msy" path="res://ressources/images/temp_fond-1.png.png" id="2_agewj"]
+[ext_resource type="Script" path="res://scripts/main_select.gd" id="3_fue0e"]
+[ext_resource type="Texture2D" uid="uid://g3i7o27g62t" path="res://ressources/images/studentA1.png" id="3_t37ws"]
+[ext_resource type="Texture2D" uid="uid://duf7ihk4yucls" path="res://ressources/images/studentA2.png" id="4_plibi"]
+[ext_resource type="Texture2D" uid="uid://dxtqm8ntffy5m" path="res://ressources/images/StudentAfall.png" id="5_r0uqx"]
+[ext_resource type="Texture2D" uid="uid://dwe1wgd0eqp4m" path="res://ressources/images/StudentAjump.png" id="6_mwgbg"]
+[ext_resource type="Texture2D" uid="uid://df5c12qe5rkj5" path="res://ressources/images/sneak.png" id="7_urfml"]
+[ext_resource type="Texture2D" uid="uid://cq8acad81146r" path="res://ressources/images/Studenthaut-1.png" id="8_2sjw8"]
+[ext_resource type="Texture2D" uid="uid://d2wjix7xlvk0p" path="res://ressources/images/Studenthaut-2.png" id="9_jwja8"]
+[ext_resource type="Texture2D" uid="uid://b5aebivgsdxlm" path="res://ressources/images/studentA_marche1.png" id="10_iju47"]
+[ext_resource type="Texture2D" uid="uid://dvfvru3b5wus1" path="res://ressources/images/studentA_marche2.png" id="11_ahhuu"]
+[ext_resource type="Texture2D" uid="uid://ddmk5vg0t8lfe" path="res://ressources/images/studentA_marche3.png" id="12_o3ub7"]
+[ext_resource type="Texture2D" uid="uid://bmsfej5fhcbui" path="res://ressources/images/studentA_marche4.png" id="13_w8cjc"]
+[ext_resource type="PackedScene" uid="uid://c3t25jf77014j" path="res://scenes/skill_select.tscn" id="14_h5ilx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_drw6o"]
+shader = ExtResource("1_q6upu")
+shader_parameter/Background_luminosity = 0.75
+
+[sub_resource type="Gradient" id="Gradient_gr0g1"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.116883, 0.5, 0.8)
+colors = PackedColorArray(0.0649351, 0.0649351, 0.0649351, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mr05u"]
+gradient = SubResource("Gradient_gr0g1")
+fill = 1
+fill_from = Vector2(0.490826, 0.527523)
+fill_to = Vector2(0.853211, 0.56422)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_klneh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m4omc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_t37ws")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_plibi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_r0uqx")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_mwgbg")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_urfml")
+}],
+"loop": true,
+"name": &"sneak",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_2sjw8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_jwja8")
+}],
+"loop": true,
+"name": &"view_top",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_iju47")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ahhuu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_o3ub7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_w8cjc")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 4.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_deyqw"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.175325, 0.337662)
+colors = PackedColorArray(0, 0, 0, 0.545098, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4alwd"]
+gradient = SubResource("Gradient_deyqw")
+fill = 1
+fill_from = Vector2(0.5, 0.7)
+fill_to = Vector2(0.5, 0.3)
+metadata/_snap_enabled = true
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_drw6o")
+offset_left = -5.0
+offset_top = -269.0
+offset_right = 1152.0
+offset_bottom = 888.0
+texture = ExtResource("2_agewj")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 495.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.462745)
+
+[node name="dialogue" type="RichTextLabel" parent="ColorRect"]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 19.0
+offset_right = 1094.0
+offset_bottom = 133.0
+text = "Un job sauvage apparait."
+
+[node name="main_select" type="Node2D" parent="ColorRect"]
+script = ExtResource("3_fue0e")
+
+[node name="attack" type="Button" parent="ColorRect/main_select"]
+offset_left = 267.0
+offset_top = 2.0
+offset_right = 448.0
+offset_bottom = 69.0
+text = "ATTACK"
+metadata/_edit_use_anchors_ = true
+
+[node name="skills" type="Button" parent="ColorRect/main_select"]
+offset_left = 623.0
+offset_top = 3.0
+offset_right = 804.0
+offset_bottom = 70.0
+text = "SKILLS"
+
+[node name="items" type="Button" parent="ColorRect/main_select"]
+offset_left = 354.0
+offset_top = 81.0
+offset_right = 535.0
+offset_bottom = 148.0
+text = "ITEMS"
+
+[node name="leave" type="Button" parent="ColorRect/main_select"]
+offset_left = 550.0
+offset_top = 81.0
+offset_right = 731.0
+offset_bottom = 148.0
+text = "LEAVE"
+
+[node name="Button" type="Button" parent="ColorRect/main_select"]
+offset_left = 504.0
+offset_top = -2.0
+offset_right = 576.0
+offset_bottom = 70.0
+text = "ULT"
+
+[node name="SkillSelect" parent="ColorRect" instance=ExtResource("14_h5ilx")]
+visible = false
+layout_mode = 0
+offset_left = -1.0
+offset_top = -2.0
+offset_right = 1151.0
+offset_bottom = 151.0
+
+[node name="back" type="Button" parent="ColorRect"]
+z_index = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.933
+anchor_top = 0.5
+anchor_right = 0.996
+anchor_bottom = 0.967
+offset_left = 0.18396
+offset_top = -0.5
+offset_right = -0.39209
+offset_bottom = 0.048996
+icon = SubResource("GradientTexture2D_mr05u")
+
+[node name="Enemy_fight_sprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(771, 342)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_klneh")
+
+[node name="Player_fight_sprite" type="AnimatedSprite2D" parent="."]
+z_index = 2
+texture_filter = 1
+position = Vector2(357, 342)
+rotation = -3.14159
+scale = Vector2(3, -3)
+sprite_frames = SubResource("SpriteFrames_m4omc")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player_fight_sprite"]
+z_index = 1
+z_as_relative = false
+position = Vector2(1.33333, 7.33333)
+scale = Vector2(1, 0.5)
+texture = SubResource("GradientTexture2D_4alwd")
+
+[node name="Button" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[connection signal="pressed" from="ColorRect/main_select/attack" to="ColorRect/main_select" method="_on_attack_pressed"]
+[connection signal="pressed" from="ColorRect/main_select/skills" to="ColorRect/main_select" method="_on_skills_pressed"]
+[connection signal="pressed" from="ColorRect/main_select/items" to="ColorRect/main_select" method="_on_items_pressed"]
+[connection signal="pressed" from="ColorRect/main_select/leave" to="ColorRect/main_select" method="_on_leave_pressed"]
+[connection signal="pressed" from="ColorRect/back" to="ColorRect/main_select" method="_on_back_pressed"]

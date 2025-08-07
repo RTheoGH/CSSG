@@ -2,8 +2,9 @@ extends Node
 
 var running: bool
 @onready var music = $AudioStreamPlayer
-@onready var fight_text = $FightHUD/ColorRect/RichTextLabel
+@onready var fight_text = $FightHUD/ColorRect/dialogue
 var current_enemy := ""
+var one_time = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -54,15 +55,17 @@ func process_world(delta: float):
 
 func process_fight(delta: float):
 	fight_text.visible_ratio += 0.05
-	if Input.is_action_just_pressed("ui_accept"):
-		$FightHUD/ColorRect.hide()
-		var skills_hud := preload("res://scenes/skill_select.tscn")
+	if Input.is_action_just_pressed("ui_accept") and !one_time:
+		$FightHUD/ColorRect/dialogue.hide()
+		$FightHUD/ColorRect/main_select.show()
+		one_time = true
+		#var skills_hud := preload("res://scenes/skill_select.tscn")
 		#var skills_hud := SkillSelect.($chomeur.skills)
 		#skills_hud.name = "SkillSelect"
-		print(get_node("chomeur").skills)
-		var apagnan = skills_hud.instantiate()
-		$FightHUD.add_child(apagnan)
-		apagnan.get_chomeur_skills(get_node("chomeur").skills)
+		#print(get_node("chomeur").skills)
+		#var apagnan = skills_hud.instantiate()
+		#$FightHUD.add_child(apagnan)
+		#$FightHUD/SkillSelect.get_chomeur_skills(get_node("chomeur").skills)
 		
 func new_game():
 	get_node("text").hide()
