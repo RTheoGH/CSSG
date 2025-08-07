@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://hbfip2tghpob"]
+[gd_scene load_steps=40 format=3 uid="uid://hbfip2tghpob"]
 
 [ext_resource type="Shader" uid="uid://kx1msrulrq2v" path="res://shaders/background_opacity.tres" id="1_q6upu"]
 [ext_resource type="Texture2D" uid="uid://b7g7sfkus2msy" path="res://ressources/images/temp_fond-1.png.png" id="2_agewj"]
@@ -6,8 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://g3i7o27g62t" path="res://ressources/images/studentA1.png" id="3_t37ws"]
 [ext_resource type="Texture2D" uid="uid://vg2xs888flvn" path="res://ressources/images/Sprite_bouton.png" id="4_flrxx"]
 [ext_resource type="Texture2D" uid="uid://duf7ihk4yucls" path="res://ressources/images/studentA2.png" id="4_plibi"]
+[ext_resource type="Shader" uid="uid://dbdjyq2u3iwi6" path="res://shaders/wing.tres" id="5_nbuoa"]
 [ext_resource type="Texture2D" uid="uid://dxtqm8ntffy5m" path="res://ressources/images/StudentAfall.png" id="5_r0uqx"]
 [ext_resource type="Texture2D" uid="uid://c2jyv58nsm15a" path="res://ressources/images/goat.png" id="5_vc2lj"]
+[ext_resource type="Shader" uid="uid://ckdkrbdh5iajy" path="res://scenes/font.tres" id="6_ggg4q"]
 [ext_resource type="Texture2D" uid="uid://dwe1wgd0eqp4m" path="res://ressources/images/StudentAjump.png" id="6_mwgbg"]
 [ext_resource type="Texture2D" uid="uid://df5c12qe5rkj5" path="res://ressources/images/sneak.png" id="7_urfml"]
 [ext_resource type="Texture2D" uid="uid://cq8acad81146r" path="res://ressources/images/Studenthaut-1.png" id="8_2sjw8"]
@@ -21,6 +23,59 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_drw6o"]
 shader = ExtResource("1_q6upu")
 shader_parameter/Background_luminosity = 0.75
+
+[sub_resource type="Gradient" id="Gradient_lyq3r"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_a46vb"]
+gradient = SubResource("Gradient_lyq3r")
+fill_from = Vector2(0.465, 0.61)
+fill_to = Vector2(0.005, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f2hws"]
+shader = ExtResource("5_nbuoa")
+shader_parameter/ColorParameter = Color(1, 0, 0, 1)
+shader_parameter/Texture2DParameter = SubResource("GradientTexture2D_a46vb")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ak542"]
+shader = ExtResource("6_ggg4q")
+
+[sub_resource type="Gradient" id="Gradient_prr45"]
+offsets = PackedFloat32Array(0, 0.411765, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.589096, 0.589096, 0.589095, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lkl7w"]
+gradient = SubResource("Gradient_prr45")
+fill_from = Vector2(0.485, 0.66)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8lcf3"]
+shader = ExtResource("5_nbuoa")
+shader_parameter/ColorParameter = Color(0.909804, 0.811765, 0, 1)
+shader_parameter/Texture2DParameter = SubResource("GradientTexture2D_lkl7w")
+
+[sub_resource type="Gradient" id="Gradient_bmtfp"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_drcm6"]
+gradient = SubResource("Gradient_bmtfp")
+fill_from = Vector2(0.1, 0.59)
+fill_to = Vector2(0.005, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e4ndw"]
+shader = ExtResource("5_nbuoa")
+shader_parameter/ColorParameter = Color(0, 0.513726, 0, 1)
+shader_parameter/Texture2DParameter = SubResource("GradientTexture2D_drcm6")
+
+[sub_resource type="Gradient" id="Gradient_yv88r"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3qyje"]
+gradient = SubResource("Gradient_yv88r")
+fill_from = Vector2(0.22, 0.59)
+fill_to = Vector2(0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4u18x"]
+shader = ExtResource("5_nbuoa")
+shader_parameter/ColorParameter = Color(0.0375274, 0.275382, 0.999993, 1)
+shader_parameter/Texture2DParameter = SubResource("GradientTexture2D_3qyje")
 
 [sub_resource type="Gradient" id="Gradient_gr0g1"]
 interpolation_mode = 1
@@ -149,16 +204,25 @@ script = ExtResource("3_fue0e")
 offset_left = 342.0
 offset_right = 523.0
 offset_bottom = 67.0
-text = "ATTACK"
 flat = true
 metadata/_edit_use_anchors_ = true
 
 [node name="attack_sp" type="Sprite2D" parent="ColorRect/main_select/attack"]
 texture_filter = 1
+material = SubResource("ShaderMaterial_f2hws")
 position = Vector2(78.875, 33.9375)
 rotation = -3.14159
 scale = Vector2(4.445, -4.383)
 texture = ExtResource("4_flrxx")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/main_select/attack"]
+material = SubResource("ShaderMaterial_ak542")
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 69.0
+bbcode_enabled = true
+text = "
+[center]FIGHT"
 
 [node name="skills" type="Button" parent="ColorRect/main_select"]
 offset_left = 571.0
@@ -169,6 +233,7 @@ flat = true
 
 [node name="skills_sp" type="Sprite2D" parent="ColorRect/main_select/skills"]
 texture_filter = 1
+material = SubResource("ShaderMaterial_8lcf3")
 position = Vector2(78.875, 33.9375)
 scale = Vector2(4.44531, 4.38281)
 texture = ExtResource("4_flrxx")
@@ -183,6 +248,7 @@ flat = true
 
 [node name="items_sp" type="Sprite2D" parent="ColorRect/main_select/items"]
 texture_filter = 1
+material = SubResource("ShaderMaterial_e4ndw")
 position = Vector2(78.875, 33.9375)
 rotation = -3.14159
 scale = Vector2(4.445, 4.383)
@@ -198,6 +264,7 @@ flat = true
 
 [node name="leave_sp" type="Sprite2D" parent="ColorRect/main_select/leave"]
 texture_filter = 1
+material = SubResource("ShaderMaterial_4u18x")
 position = Vector2(78.875, 33.9375)
 rotation = -3.14159
 scale = Vector2(-4.445, 4.383)
