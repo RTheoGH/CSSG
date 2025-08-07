@@ -1,11 +1,13 @@
-[gd_scene load_steps=23 format=3 uid="uid://hbfip2tghpob"]
+[gd_scene load_steps=25 format=3 uid="uid://hbfip2tghpob"]
 
 [ext_resource type="Shader" uid="uid://kx1msrulrq2v" path="res://shaders/background_opacity.tres" id="1_q6upu"]
 [ext_resource type="Texture2D" uid="uid://b7g7sfkus2msy" path="res://ressources/images/temp_fond-1.png.png" id="2_agewj"]
 [ext_resource type="Script" path="res://scripts/main_select.gd" id="3_fue0e"]
 [ext_resource type="Texture2D" uid="uid://g3i7o27g62t" path="res://ressources/images/studentA1.png" id="3_t37ws"]
+[ext_resource type="Texture2D" uid="uid://vg2xs888flvn" path="res://ressources/images/Sprite_bouton.png" id="4_flrxx"]
 [ext_resource type="Texture2D" uid="uid://duf7ihk4yucls" path="res://ressources/images/studentA2.png" id="4_plibi"]
 [ext_resource type="Texture2D" uid="uid://dxtqm8ntffy5m" path="res://ressources/images/StudentAfall.png" id="5_r0uqx"]
+[ext_resource type="Texture2D" uid="uid://c2jyv58nsm15a" path="res://ressources/images/goat.png" id="5_vc2lj"]
 [ext_resource type="Texture2D" uid="uid://dwe1wgd0eqp4m" path="res://ressources/images/StudentAjump.png" id="6_mwgbg"]
 [ext_resource type="Texture2D" uid="uid://df5c12qe5rkj5" path="res://ressources/images/sneak.png" id="7_urfml"]
 [ext_resource type="Texture2D" uid="uid://cq8acad81146r" path="res://ressources/images/Studenthaut-1.png" id="8_2sjw8"]
@@ -144,40 +146,75 @@ text = "Un job sauvage apparait."
 script = ExtResource("3_fue0e")
 
 [node name="attack" type="Button" parent="ColorRect/main_select"]
-offset_left = 267.0
-offset_top = 2.0
-offset_right = 448.0
-offset_bottom = 69.0
+offset_left = 342.0
+offset_right = 523.0
+offset_bottom = 67.0
 text = "ATTACK"
+flat = true
 metadata/_edit_use_anchors_ = true
 
+[node name="attack_sp" type="Sprite2D" parent="ColorRect/main_select/attack"]
+texture_filter = 1
+position = Vector2(78.875, 33.9375)
+rotation = -3.14159
+scale = Vector2(4.445, -4.383)
+texture = ExtResource("4_flrxx")
+
 [node name="skills" type="Button" parent="ColorRect/main_select"]
-offset_left = 623.0
-offset_top = 3.0
-offset_right = 804.0
-offset_bottom = 70.0
-text = "SKILLS"
+offset_left = 571.0
+offset_top = -1.0
+offset_right = 741.0
+offset_bottom = 72.0
+flat = true
+
+[node name="skills_sp" type="Sprite2D" parent="ColorRect/main_select/skills"]
+texture_filter = 1
+position = Vector2(78.875, 33.9375)
+scale = Vector2(4.44531, 4.38281)
+texture = ExtResource("4_flrxx")
 
 [node name="items" type="Button" parent="ColorRect/main_select"]
-offset_left = 354.0
+offset_left = 382.0
 offset_top = 81.0
-offset_right = 535.0
+offset_right = 563.0
 offset_bottom = 148.0
 text = "ITEMS"
+flat = true
+
+[node name="items_sp" type="Sprite2D" parent="ColorRect/main_select/items"]
+texture_filter = 1
+position = Vector2(78.875, 33.9375)
+rotation = -3.14159
+scale = Vector2(4.445, 4.383)
+texture = ExtResource("4_flrxx")
 
 [node name="leave" type="Button" parent="ColorRect/main_select"]
-offset_left = 550.0
+offset_left = 535.0
 offset_top = 81.0
-offset_right = 731.0
+offset_right = 716.0
 offset_bottom = 148.0
 text = "LEAVE"
+flat = true
+
+[node name="leave_sp" type="Sprite2D" parent="ColorRect/main_select/leave"]
+texture_filter = 1
+position = Vector2(78.875, 33.9375)
+rotation = -3.14159
+scale = Vector2(-4.445, 4.383)
+texture = ExtResource("4_flrxx")
 
 [node name="Button" type="Button" parent="ColorRect/main_select"]
-offset_left = 504.0
-offset_top = -2.0
-offset_right = 576.0
-offset_bottom = 70.0
+offset_left = 500.0
+offset_top = -3.0
+offset_right = 572.0
+offset_bottom = 69.0
 text = "ULT"
+flat = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ColorRect/main_select/Button"]
+position = Vector2(35, 37)
+scale = Vector2(0.269828, 0.277573)
+texture = ExtResource("5_vc2lj")
 
 [node name="SkillSelect" parent="ColorRect" instance=ExtResource("14_h5ilx")]
 visible = false
