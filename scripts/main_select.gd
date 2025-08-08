@@ -51,25 +51,37 @@ func _on_back_pressed() -> void:
 		self.show()
 
 func _on_attack_mouse_entered() -> void:
-	get_node("attack/attack_sp").texture = load("res://ressources/images/Sprite_bouton_2.png")
+	get_node("attack/attack_sp").texture = load("res://ressources/images/Sprite_bouton_active.png")
+	get_node("attack/attack_sp").material.shader = load("res://shaders/active_button.tres")
+	get_node("attack/attack_sp").material.set_shader_parameter("color", Color(1, 0, 0))
 	
 func _on_attack_mouse_exited() -> void:
 	get_node("attack/attack_sp").texture = load("res://ressources/images/Sprite_bouton.png")
+	get_node("attack/attack_sp").material.shader = load("res://shaders/wing.tres")
 
 func _on_skills_mouse_entered() -> void:
-	get_node("skills/skills_sp").texture = load("res://ressources/images/Sprite_bouton_2.png")
+	get_node("skills/skills_sp").texture = load("res://ressources/images/Sprite_bouton_active.png")
+	get_node("skills/skills_sp").material.shader = load("res://shaders/active_button.tres")
+	get_node("skills/skills_sp").material.set_shader_parameter("color", Color(0.91, 0.812, 0))
 
 func _on_skills_mouse_exited() -> void:
 	get_node("skills/skills_sp").texture = load("res://ressources/images/Sprite_bouton.png")
+	get_node("skills/skills_sp").material.shader = load("res://shaders/wing.tres")
 
 func _on_items_mouse_entered() -> void:
-	get_node("items/items_sp").texture = load("res://ressources/images/Sprite_bouton_2.png")
+	get_node("items/items_sp").texture = load("res://ressources/images/Sprite_bouton_active.png")
+	get_node("items/items_sp").material.shader = load("res://shaders/active_button.tres")
+	get_node("items/items_sp").material.set_shader_parameter("color", Color(0, 0.514, 0))
 
 func _on_items_mouse_exited() -> void:
 	get_node("items/items_sp").texture = load("res://ressources/images/Sprite_bouton.png")
+	get_node("items/items_sp").material.shader = load("res://shaders/wing.tres")
 
 func _on_leave_mouse_entered() -> void:
-	get_node("leave/leave_sp").texture = load("res://ressources/images/Sprite_bouton_2.png")
+	get_node("leave/leave_sp").texture = load("res://ressources/images/Sprite_bouton_active.png")
+	get_node("leave/leave_sp").material.shader = load("res://shaders/active_button.tres")
+	get_node("leave/leave_sp").material.set_shader_parameter("color", Color(0.038, 0.275, 1))
 
 func _on_leave_mouse_exited() -> void:
 	get_node("leave/leave_sp").texture = load("res://ressources/images/Sprite_bouton.png")
+	get_node("leave/leave_sp").material.shader = load("res://shaders/wing.tres")

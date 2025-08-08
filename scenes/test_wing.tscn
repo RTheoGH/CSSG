@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqmpnk1pwxwh7"]
+
+[ext_resource type="Texture2D" uid="uid://crmja2nw3bcbe" path="res://ressources/images/Sprite_bouton_active.png" id="1_3a0tq"]
+[ext_resource type="Shader" uid="uid://c4tmmkmke0w80" path="res://shaders/active_button.tres" id="1_74f1e"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ehfbr"]
+shader = ExtResource("1_74f1e")
+shader_parameter/color = null
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_ehfbr")
+texture = ExtResource("1_3a0tq")
