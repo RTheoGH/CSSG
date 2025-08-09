@@ -1,10 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://6ueec22mi8co"]
+[gd_scene load_steps=23 format=3 uid="uid://6ueec22mi8co"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_1apkk"]
 [ext_resource type="PackedScene" uid="uid://bvc6ijsw2wpn0" path="res://scenes/UI.tscn" id="2_h4x6i"]
 [ext_resource type="PackedScene" uid="uid://hbfip2tghpob" path="res://scenes/Battle.tscn" id="3_axrbh"]
 [ext_resource type="PackedScene" uid="uid://cocwo8aq5j7pw" path="res://scenes/Player.tscn" id="4_apvqn"]
-[ext_resource type="AudioStream" uid="uid://772ggq0sx8jb" path="res://ressources/musics/music jeu test.wav" id="4_r14mf"]
 [ext_resource type="PackedScene" uid="uid://cphd0yo8fpvb6" path="res://scenes/Job.tscn" id="5_y55mw"]
 [ext_resource type="PackedScene" uid="uid://iqcu8iqk2bde" path="res://scenes/plateforme.tscn" id="6_p4iim"]
 [ext_resource type="PackedScene" uid="uid://bmqjuoupt4vqd" path="res://scenes/map.tscn" id="7_od2uo"]
@@ -152,10 +151,6 @@ text = "relancer"
 
 [node name="chomeur" parent="." instance=ExtResource("4_apvqn")]
 skills = Array[ExtResource("18_c4rqx")]([SubResource("Resource_s3pkg"), SubResource("Resource_xldig"), SubResource("Resource_kkyj2")])
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_r14mf")
-volume_db = -30.0
 
 [node name="job" parent="." node_paths=PackedStringArray("chomeur") instance=ExtResource("5_y55mw")]
 chomeur = NodePath("../chomeur")
