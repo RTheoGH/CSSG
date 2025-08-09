@@ -29,6 +29,12 @@ func process_world(delta: float):
 	var player_pos = get_node("chomeur").global_position
 	var offset = Vector2.ZERO
 	
+	if Input.is_action_pressed("fullscreen"):
+		if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_WINDOWED:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		elif DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	
 	if Input.is_action_pressed("camera_right"):
 		offset.x += 50
 	if Input.is_action_pressed("camera_left"):
