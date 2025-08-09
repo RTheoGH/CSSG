@@ -1,7 +1,6 @@
 extends Node
 
 var running: bool
-@onready var music = $AudioStreamPlayer
 @onready var fight_text = $FightHUD/ColorRect/dialogue
 var current_enemy := ""
 var one_time = false
@@ -9,7 +8,7 @@ var one_time = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	running = true
-	$AudioStreamPlayer.play()
+	$AudioEngine.play_music($AudioEngine.Music.OVERWORLD)
 	new_game()
 	$WorldHUD/Lifebar.position = Vector2(50,50)
 	$FightHUD.hide()
@@ -83,7 +82,7 @@ func new_game():
 	running = true
 	get_node("WorldHUD").get_node("Lifebar").current_health = 5
 	get_node("WorldHUD").get_node("Lifebar").update_hearts()
-	$AudioStreamPlayer.play()
+	$AudioEngine.play_music($AudioEngine.Music.OVERWORLD)
 	
 #true = fight mode, false = world mode
 func toggle_fight_mode(fight_mode: bool):
@@ -91,6 +90,7 @@ func toggle_fight_mode(fight_mode: bool):
 	Global.fight_mode = fight_mode
 	
 	if(fight_mode):
+		$AudioEngine.play_effect($AudioEngine.Effect.HIT, true)
 		$WorldHUD.hide()
 		$FightHUD.show()
 		set_background_opacity(0)
@@ -114,6 +114,7 @@ func _on_hit(enemy: Enemy):
 	#get_node("chomeur").set_physics_process(false)
 	#get_node("job").set_physics_process(false)
 	if !Global.fight_mode:
+		$AudioEngine.stop_music($AudioEngine.Music.OVERWORLD)
 		$FightHUD/Enemy_fight_sprite.sprite_frames = enemy.get_node("AnimatedSprite2D").sprite_frames
 		current_enemy = enemy.get_class_name()
 		fight_text.text = "Un " + current_enemy + " sauvage apparaît !"
@@ -129,8 +130,6 @@ func _on_game_over():
 	get_node("job").set_physics_process(false)
 	get_node("Camera2D").global_position = Vector2(0,0)
 	running = false
-	$AudioStreamPlayer.stop()
-	
 
 func _on_button_pressed() -> void:
 	new_game()

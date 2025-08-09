@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://l8g6fybrxscs"]
+
+[ext_resource type="Script" path="res://scripts/audio_engine.gd" id="1_ysk3n"]
+[ext_resource type="AudioStream" uid="uid://772ggq0sx8jb" path="res://ressources/musics/music jeu test.wav" id="2_88tsm"]
+[ext_resource type="AudioStream" uid="uid://co8pl2outdxt1" path="res://ressources/sounds/hit.wav" id="3_redxj"]
+
+[node name="AudioEngine" type="Node"]
+script = ExtResource("1_ysk3n")
+
+[node name="Music" type="Node" parent="."]
+
+[node name="Overworld" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("2_88tsm")
+volume_db = -30.0
+
+[node name="Effect" type="Node" parent="."]
+
+[node name="Hit" type="AudioStreamPlayer" parent="Effect"]
+stream = ExtResource("3_redxj")
+volume_db = -30.0
