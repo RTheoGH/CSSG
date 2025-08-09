@@ -49,6 +49,8 @@ func _on_back_pressed() -> void:
 		boite_diag.hide()
 		back.hide()
 		self.show()
+		
+
 
 func _on_attack_mouse_entered() -> void:
 	get_node("attack/attack_sp").texture = load("res://ressources/images/Sprite_bouton_active.png")
@@ -85,3 +87,12 @@ func _on_leave_mouse_entered() -> void:
 func _on_leave_mouse_exited() -> void:
 	get_node("leave/leave_sp").texture = load("res://ressources/images/Sprite_bouton.png")
 	get_node("leave/leave_sp").material.shader = load("res://shaders/wing.tres")
+
+func _on_back_mouse_entered() -> void:
+	get_parent().get_node("back/back_sp").texture = load("res://ressources/images/Sprite_bouton_active.png")
+	get_parent().get_node("back/back_sp").material.shader = load("res://shaders/active_button.tres")
+	get_parent().get_node("back/back_sp").material.set_shader_parameter("color", Color(0.561, 1, 0.802, 0.655))
+
+func _on_back_mouse_exited() -> void:
+	get_parent().get_node("back/back_sp").texture = load("res://ressources/images/Sprite_bouton.png")
+	get_parent().get_node("back/back_sp").material.shader = load("res://shaders/wing.tres")

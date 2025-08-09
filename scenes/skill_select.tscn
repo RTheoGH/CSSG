@@ -4,19 +4,19 @@
 [ext_resource type="Script" path="res://scripts/skill_select.gd" id="1_xumfo"]
 
 [node name="SkillSelect" type="ColorRect"]
-offset_left = -2.0
-offset_top = 489.0
-offset_right = 1150.0
-offset_bottom = 642.0
+offset_top = 512.0
+offset_right = 1280.0
+offset_bottom = 656.0
 color = Color(0, 0, 0, 0)
 script = ExtResource("1_xumfo")
 
 [node name="Skill1" type="Button" parent="."]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 5.0
-offset_right = 506.0
-offset_bottom = 72.0
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.469
+anchor_bottom = 0.5
+offset_right = -0.320007
+offset_bottom = -8.0
 text = "-"
 
 [node name="TextureRect" type="TextureRect" parent="Skill1"]
@@ -29,11 +29,13 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_n7nyl")
 
 [node name="Skill2" type="Button" parent="."]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 81.0
-offset_right = 506.0
-offset_bottom = 148.0
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.556
+anchor_right = 0.469
+anchor_bottom = 1.0
+offset_top = -0.0640106
+offset_right = -0.320007
 text = "-"
 
 [node name="TextureRect" type="TextureRect" parent="Skill2"]
@@ -46,11 +48,13 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_n7nyl")
 
 [node name="Skill3" type="Button" parent="."]
-layout_mode = 0
-offset_left = 511.0
-offset_top = 5.0
-offset_right = 982.0
-offset_bottom = 72.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.481
+anchor_right = 0.95
+anchor_bottom = 0.444
+offset_left = 0.319946
+offset_bottom = 0.0639954
 text = "-"
 
 [node name="TextureRect" type="TextureRect" parent="Skill3"]
@@ -63,11 +67,14 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_n7nyl")
 
 [node name="Skill4" type="Button" parent="."]
-layout_mode = 0
-offset_left = 511.0
-offset_top = 81.0
-offset_right = 982.0
-offset_bottom = 148.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.481
+anchor_top = 0.556
+anchor_right = 0.95
+anchor_bottom = 1.0
+offset_left = 0.319946
+offset_top = -0.0640106
 text = "-"
 
 [node name="TextureRect" type="TextureRect" parent="Skill4"]
@@ -81,7 +88,6 @@ texture = ExtResource("1_n7nyl")
 
 [node name="DescriptionLeft" type="ColorRect" parent="."]
 visible = false
-layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 503.0
@@ -99,7 +105,6 @@ context_menu_enabled = true
 
 [node name="DescriptionRight" type="ColorRect" parent="."]
 visible = false
-layout_mode = 0
 offset_left = 514.0
 offset_top = 8.0
 offset_right = 979.0

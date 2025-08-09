@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://hbfip2tghpob"]
+[gd_scene load_steps=44 format=3 uid="uid://hbfip2tghpob"]
 
 [ext_resource type="Shader" uid="uid://kx1msrulrq2v" path="res://shaders/background_opacity.tres" id="1_q6upu"]
 [ext_resource type="Texture2D" uid="uid://b7g7sfkus2msy" path="res://ressources/images/temp_fond-1.png.png" id="2_agewj"]
@@ -94,6 +94,20 @@ fill = 1
 fill_from = Vector2(0.486239, 0.568807)
 fill_to = Vector2(0.90367, 0.0825688)
 
+[sub_resource type="Gradient" id="Gradient_asg2t"]
+offsets = PackedFloat32Array(0, 0.655738)
+colors = PackedColorArray(0, 0, 0, 1, 0.720467, 0.720468, 0.720467, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xpxw5"]
+gradient = SubResource("Gradient_asg2t")
+fill_from = Vector2(0.360215, 0.698925)
+fill_to = Vector2(0.946237, 0.0645161)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oi11t"]
+shader = ExtResource("5_nbuoa")
+shader_parameter/ColorParameter = Color(0.56059, 1, 0.801674, 0.654902)
+shader_parameter/Texture2DParameter = SubResource("GradientTexture2D_xpxw5")
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_klneh"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_m4omc"]
@@ -181,9 +195,9 @@ z_index = -2
 texture_filter = 1
 material = SubResource("ShaderMaterial_drw6o")
 offset_left = -5.0
-offset_top = -269.0
-offset_right = 1152.0
-offset_bottom = 888.0
+offset_top = -329.0
+offset_right = 1280.0
+offset_bottom = 1042.0
 texture = ExtResource("2_agewj")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -207,14 +221,16 @@ theme_override_font_sizes/normal_font_size = 20
 text = "Un job sauvage apparait."
 
 [node name="main_select" type="Node2D" parent="ColorRect"]
-position = Vector2(68, -4)
+visible = false
+position = Vector2(660, 111)
 script = ExtResource("3_fue0e")
 
 [node name="attack" type="Button" parent="ColorRect/main_select"]
 z_index = 1
-offset_left = 342.0
-offset_right = 523.0
-offset_bottom = 67.0
+offset_left = -189.5
+offset_top = -68.4998
+offset_right = -8.50006
+offset_bottom = -1.49985
 flat = true
 metadata/_edit_use_anchors_ = true
 
@@ -249,11 +265,12 @@ texture = SubResource("GradientTexture2D_vk162")
 
 [node name="skills" type="Button" parent="ColorRect/main_select"]
 z_index = 1
-offset_left = 571.0
-offset_top = -1.0
-offset_right = 741.0
-offset_bottom = 72.0
+offset_left = 39.4999
+offset_top = -69.4998
+offset_right = 209.5
+offset_bottom = 3.50015
 flat = true
+metadata/_edit_use_anchors_ = true
 
 [node name="skills_sp" type="Sprite2D" parent="ColorRect/main_select/skills"]
 z_index = 1
@@ -285,12 +302,13 @@ texture = SubResource("GradientTexture2D_vk162")
 
 [node name="items" type="Button" parent="ColorRect/main_select"]
 z_index = 1
-offset_left = 379.0
-offset_top = 81.0
-offset_right = 560.0
-offset_bottom = 148.0
+offset_left = -152.5
+offset_top = 12.5002
+offset_right = 28.4999
+offset_bottom = 79.5002
 text = "ITEMS"
 flat = true
+metadata/_edit_use_anchors_ = true
 
 [node name="items_sp" type="Sprite2D" parent="ColorRect/main_select/items"]
 z_index = 1
@@ -323,12 +341,13 @@ texture = SubResource("GradientTexture2D_vk162")
 
 [node name="leave" type="Button" parent="ColorRect/main_select"]
 z_index = 1
-offset_left = 532.0
-offset_top = 81.0
-offset_right = 713.0
-offset_bottom = 148.0
+offset_left = 0.499939
+offset_top = 12.5002
+offset_right = 181.5
+offset_bottom = 79.5002
 text = "LEAVE"
 flat = true
+metadata/_edit_use_anchors_ = true
 
 [node name="leave_sp" type="Sprite2D" parent="ColorRect/main_select/leave"]
 z_index = 1
@@ -361,12 +380,13 @@ texture = SubResource("GradientTexture2D_vk162")
 
 [node name="Button" type="Button" parent="ColorRect/main_select"]
 z_index = 1
-offset_left = 500.0
-offset_top = -3.0
-offset_right = 572.0
-offset_bottom = 69.0
+offset_left = -31.5001
+offset_top = -71.4998
+offset_right = 40.4999
+offset_bottom = 0.500153
 text = "ULT"
 flat = true
+metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="ColorRect/main_select/Button"]
 position = Vector2(35, 37)
@@ -374,18 +394,17 @@ scale = Vector2(0.269828, 0.277573)
 texture = ExtResource("5_vc2lj")
 
 [node name="Sprite2D" type="Sprite2D" parent="ColorRect/main_select"]
-visible = false
-position = Vector2(526.75, 50)
+position = Vector2(-4.75006, -18.4998)
 scale = Vector2(6.53906, 3.04688)
 texture = SubResource("GradientTexture2D_tga2w")
 
 [node name="SkillSelect" parent="ColorRect" instance=ExtResource("14_h5ilx")]
 visible = false
 layout_mode = 0
-offset_left = -1.0
-offset_top = -2.0
-offset_right = 1151.0
-offset_bottom = 151.0
+offset_left = 50.0
+offset_top = 35.0
+offset_right = 1202.0
+offset_bottom = 188.0
 
 [node name="back" type="Button" parent="ColorRect"]
 z_index = 2
@@ -395,14 +414,15 @@ anchor_left = 0.933
 anchor_top = 0.5
 anchor_right = 0.996
 anchor_bottom = 0.967
-offset_left = 0.18396
+offset_left = 2.76001
 offset_top = -58.5
-offset_right = -0.391968
+offset_right = 2.18408
 offset_bottom = 0.048996
 flat = true
 
-[node name="skills_sp" type="Sprite2D" parent="ColorRect/back"]
+[node name="back_sp" type="Sprite2D" parent="ColorRect/back"]
 texture_filter = 1
+material = SubResource("ShaderMaterial_oi11t")
 position = Vector2(38, 60)
 rotation = -1.5708
 scale = Vector2(4.44531, 4.38281)
@@ -457,4 +477,6 @@ offset_bottom = 8.0
 [connection signal="mouse_entered" from="ColorRect/main_select/leave" to="ColorRect/main_select" method="_on_leave_mouse_entered"]
 [connection signal="mouse_exited" from="ColorRect/main_select/leave" to="ColorRect/main_select" method="_on_leave_mouse_exited"]
 [connection signal="pressed" from="ColorRect/main_select/leave" to="ColorRect/main_select" method="_on_leave_pressed"]
+[connection signal="mouse_entered" from="ColorRect/back" to="ColorRect/main_select" method="_on_back_mouse_entered"]
+[connection signal="mouse_exited" from="ColorRect/back" to="ColorRect/main_select" method="_on_back_mouse_exited"]
 [connection signal="pressed" from="ColorRect/back" to="ColorRect/main_select" method="_on_back_pressed"]
