@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://hbfip2tghpob" path="res://scenes/Battle.tscn" id="3_axrbh"]
 [ext_resource type="PackedScene" uid="uid://cocwo8aq5j7pw" path="res://scenes/Player.tscn" id="4_apvqn"]
 [ext_resource type="PackedScene" uid="uid://cphd0yo8fpvb6" path="res://scenes/Job.tscn" id="5_y55mw"]
-[ext_resource type="PackedScene" uid="uid://iqcu8iqk2bde" path="res://scenes/plateforme.tscn" id="6_p4iim"]
-[ext_resource type="PackedScene" uid="uid://bmqjuoupt4vqd" path="res://scenes/map.tscn" id="7_od2uo"]
+[ext_resource type="PackedScene" path="res://scenes/plateforme.tscn" id="6_p4iim"]
+[ext_resource type="PackedScene" path="res://scenes/map.tscn" id="7_od2uo"]
 [ext_resource type="Script" path="res://scripts/timer.gd" id="8_it0lm"]
 [ext_resource type="Texture2D" uid="uid://c2jyv58nsm15a" path="res://ressources/images/goat.png" id="9_in5b8"]
 [ext_resource type="AudioStream" uid="uid://55ok6y3fhtdv" path="res://ressources/sounds/lutz_1.mp3" id="10_xgx00"]
@@ -98,11 +98,11 @@ cache/0/15/0/scale = 1.0
 [sub_resource type="Resource" id="Resource_s3pkg"]
 script = ExtResource("19_l33xc")
 
-[sub_resource type="Resource" id="Resource_xldig"]
-script = ExtResource("18_c4rqx")
-
 [sub_resource type="Resource" id="Resource_kkyj2"]
 script = ExtResource("19_nhipu")
+
+[sub_resource type="Resource" id="Resource_xldig"]
+script = ExtResource("18_c4rqx")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hq08k"]
 streams_count = 4
@@ -150,7 +150,7 @@ offset_bottom = 78.0
 text = "relancer"
 
 [node name="chomeur" parent="." instance=ExtResource("4_apvqn")]
-skills = Array[ExtResource("18_c4rqx")]([SubResource("Resource_s3pkg"), SubResource("Resource_xldig"), SubResource("Resource_kkyj2")])
+skills = Array[ExtResource("18_c4rqx")]([SubResource("Resource_s3pkg"), SubResource("Resource_kkyj2"), SubResource("Resource_xldig")])
 
 [node name="job" parent="." node_paths=PackedStringArray("chomeur") instance=ExtResource("5_y55mw")]
 chomeur = NodePath("../chomeur")

@@ -88,6 +88,7 @@ texture = ExtResource("1_n7nyl")
 
 [node name="DescriptionLeft" type="ColorRect" parent="."]
 visible = false
+layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 503.0
@@ -105,6 +106,7 @@ context_menu_enabled = true
 
 [node name="DescriptionRight" type="ColorRect" parent="."]
 visible = false
+layout_mode = 0
 offset_left = 514.0
 offset_top = 8.0
 offset_right = 979.0

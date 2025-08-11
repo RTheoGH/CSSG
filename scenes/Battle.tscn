@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://hbfip2tghpob"]
+[gd_scene load_steps=50 format=3 uid="uid://hbfip2tghpob"]
 
 [ext_resource type="Shader" uid="uid://kx1msrulrq2v" path="res://shaders/background_opacity.tres" id="1_q6upu"]
 [ext_resource type="Texture2D" uid="uid://b7g7sfkus2msy" path="res://ressources/images/temp_fond-1.png.png" id="2_agewj"]
@@ -24,6 +24,8 @@
 shader = ExtResource("1_q6upu")
 shader_parameter/Background_luminosity = 0.75
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_25uxc"]
+
 [sub_resource type="Gradient" id="Gradient_lyq3r"]
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_a46vb"]
@@ -45,6 +47,8 @@ fill = 1
 fill_from = Vector2(0.5, 0.555046)
 fill_to = Vector2(0.770642, 0.366972)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6eveq"]
+
 [sub_resource type="Gradient" id="Gradient_prr45"]
 offsets = PackedFloat32Array(0, 0.411765, 1)
 colors = PackedColorArray(0, 0, 0, 1, 0.589096, 0.589096, 0.589095, 1, 1, 1, 1, 1)
@@ -59,6 +63,8 @@ shader = ExtResource("5_nbuoa")
 shader_parameter/ColorParameter = Color(0.909804, 0.811765, 0, 1)
 shader_parameter/Texture2DParameter = SubResource("GradientTexture2D_lkl7w")
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mx70k"]
+
 [sub_resource type="Gradient" id="Gradient_bmtfp"]
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_drcm6"]
@@ -70,6 +76,8 @@ fill_to = Vector2(0.005, 1)
 shader = ExtResource("5_nbuoa")
 shader_parameter/ColorParameter = Color(0, 0.513726, 0, 1)
 shader_parameter/Texture2DParameter = SubResource("GradientTexture2D_drcm6")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_suren"]
 
 [sub_resource type="Gradient" id="Gradient_yv88r"]
 
@@ -83,6 +91,8 @@ shader = ExtResource("5_nbuoa")
 shader_parameter/ColorParameter = Color(0.0375274, 0.275382, 0.999993, 1)
 shader_parameter/Texture2DParameter = SubResource("GradientTexture2D_3qyje")
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0r1vp"]
+
 [sub_resource type="Gradient" id="Gradient_s0qjy"]
 interpolation_mode = 2
 offsets = PackedFloat32Array(0.506494, 0.75974)
@@ -93,6 +103,8 @@ gradient = SubResource("Gradient_s0qjy")
 fill = 1
 fill_from = Vector2(0.486239, 0.568807)
 fill_to = Vector2(0.90367, 0.0825688)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0yuvi"]
 
 [sub_resource type="Gradient" id="Gradient_asg2t"]
 offsets = PackedFloat32Array(0, 0.655738)
@@ -231,6 +243,7 @@ offset_left = -189.5
 offset_top = -68.4998
 offset_right = -8.50006
 offset_bottom = -1.49985
+theme_override_styles/focus = SubResource("StyleBoxEmpty_25uxc")
 flat = true
 metadata/_edit_use_anchors_ = true
 
@@ -269,6 +282,7 @@ offset_left = 39.4999
 offset_top = -69.4998
 offset_right = 209.5
 offset_bottom = 3.50015
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6eveq")
 flat = true
 metadata/_edit_use_anchors_ = true
 
@@ -306,6 +320,7 @@ offset_left = -152.5
 offset_top = 12.5002
 offset_right = 28.4999
 offset_bottom = 79.5002
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mx70k")
 text = "ITEMS"
 flat = true
 metadata/_edit_use_anchors_ = true
@@ -345,6 +360,7 @@ offset_left = 0.499939
 offset_top = 12.5002
 offset_right = 181.5
 offset_bottom = 79.5002
+theme_override_styles/focus = SubResource("StyleBoxEmpty_suren")
 text = "LEAVE"
 flat = true
 metadata/_edit_use_anchors_ = true
@@ -384,6 +400,7 @@ offset_left = -31.5001
 offset_top = -71.4998
 offset_right = 40.4999
 offset_bottom = 0.500153
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0r1vp")
 text = "ULT"
 flat = true
 metadata/_edit_use_anchors_ = true
@@ -418,6 +435,7 @@ offset_left = 2.76001
 offset_top = -58.5
 offset_right = 2.18408
 offset_bottom = 0.048996
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0yuvi")
 flat = true
 
 [node name="back_sp" type="Sprite2D" parent="ColorRect/back"]
