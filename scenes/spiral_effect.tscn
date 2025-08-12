@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7yhu6c0edldl"]
+
+[ext_resource type="Shader" uid="uid://cq8pfo1hpi3vf" path="res://shaders/test_spiral_2.tres" id="1_n6v01"]
+[ext_resource type="Script" path="res://scripts/spiral_effect.gd" id="2_8ifx6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xw6m1"]
+shader = ExtResource("1_n6v01")
+
+[node name="Spiral_effect" type="ColorRect"]
+material = SubResource("ShaderMaterial_xw6m1")
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 1)
+script = ExtResource("2_8ifx6")
+metadata/progression = 0.5

@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://6ueec22mi8co"]
+[gd_scene load_steps=24 format=3 uid="uid://6ueec22mi8co"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_1apkk"]
 [ext_resource type="PackedScene" uid="uid://bvc6ijsw2wpn0" path="res://scenes/UI.tscn" id="2_h4x6i"]
 [ext_resource type="PackedScene" uid="uid://hbfip2tghpob" path="res://scenes/Battle.tscn" id="3_axrbh"]
+[ext_resource type="PackedScene" uid="uid://c7yhu6c0edldl" path="res://scenes/spiral_effect.tscn" id="3_mafwd"]
 [ext_resource type="PackedScene" uid="uid://cocwo8aq5j7pw" path="res://scenes/Player.tscn" id="4_apvqn"]
 [ext_resource type="PackedScene" uid="uid://cphd0yo8fpvb6" path="res://scenes/Job.tscn" id="5_y55mw"]
 [ext_resource type="PackedScene" path="res://scenes/plateforme.tscn" id="6_p4iim"]
@@ -120,6 +121,9 @@ zoom = Vector2(2.5, 2.5)
 [node name="WorldHUD" type="CanvasLayer" parent="."]
 
 [node name="Lifebar" parent="WorldHUD" instance=ExtResource("2_h4x6i")]
+
+[node name="Spiral_effect" parent="WorldHUD" instance=ExtResource("3_mafwd")]
+metadata/progression = 0.501
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

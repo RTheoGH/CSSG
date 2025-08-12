@@ -87,16 +87,17 @@ func new_game():
 #true = fight mode, false = world mode
 func toggle_fight_mode(fight_mode: bool):
 	print("switch de mode")
+	
 	Global.fight_mode = fight_mode
 	
 	if(fight_mode):
 		$AudioEngine.play_effect($AudioEngine.Effect.HIT, true)
-		$WorldHUD.hide()
-		$FightHUD.show()
+		#$WorldHUD.hide()
+		#$FightHUD.show()
 		set_background_opacity(0)
-		var tween_background = $CanvasLayer/Fight_Background.create_tween()
-		tween_background.set_ease(Tween.EASE_IN)
-		tween_background.tween_property($CanvasLayer/Fight_Background, "color:a", 0.5, 0.2)
+		#var tween_background = $CanvasLayer/Fight_Background.create_tween()
+		#tween_background.set_ease(Tween.EASE_IN)
+		#tween_background.tween_property($CanvasLayer/Fight_Background, "color:a", 0.5, 0.2)
 		fight_text.visible_ratio = 0
 		$FightHUD/Enemy_fight_sprite.play("default")
 		$FightHUD/Player_fight_sprite.play("default")
@@ -114,12 +115,16 @@ func _on_hit(enemy: Enemy):
 	#get_node("chomeur").set_physics_process(false)
 	#get_node("job").set_physics_process(false)
 	if !Global.fight_mode:
+		
+		$WorldHUD/Spiral_effect.visible = true
+		var tween_spiral = create_tween()
+		print(tween_spiral)
+		tween_spiral.tween_method(tween_spiral_method, 0.501, 1, 1)
+		toggle_fight_mode(true)
 		$AudioEngine.stop_music($AudioEngine.Music.OVERWORLD)
 		$FightHUD/Enemy_fight_sprite.sprite_frames = enemy.get_node("AnimatedSprite2D").sprite_frames
 		current_enemy = enemy.get_class_name()
 		fight_text.text = "Un " + current_enemy + " sauvage apparaît !"
-		toggle_fight_mode(true)
-		
 			
 	get_node("WorldHUD").get_node("Lifebar").take_damage()
 	
@@ -133,3 +138,9 @@ func _on_game_over():
 
 func _on_button_pressed() -> void:
 	new_game()
+
+func tween_spiral_method(value: float):
+	print($WorldHUD/Spiral_effect)
+	$WorldHUD/Spiral_effect.set_meta("progression", value)
+	print($WorldHUD/Spiral_effect.get_meta("progression"))
+	
