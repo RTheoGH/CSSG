@@ -1,10 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://c66fppvc1p6mc"]
+[gd_scene load_steps=7 format=3 uid="uid://c66fppvc1p6mc"]
 
 [ext_resource type="Texture2D" uid="uid://c2jyv58nsm15a" path="res://ressources/images/goat.png" id="1_buq3h"]
 [ext_resource type="PackedScene" uid="uid://c7yhu6c0edldl" path="res://scenes/spiral_effect.tscn" id="3_ipgp1"]
 [ext_resource type="Script" path="res://scripts/test_slider.gd" id="3_qcy2o"]
+[ext_resource type="Shader" path="res://shaders/test spirale.gdshader" id="4_13p3c"]
+[ext_resource type="Texture2D" uid="uid://tx0ldd63mke6" path="res://ressources/images/gradient_spirale.png" id="5_6rp5u"]
 
-[node name="TestSpirale" type="Node2D"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mriyk"]
+shader = ExtResource("4_13p3c")
+shader_parameter/progression = -0.001
+shader_parameter/gradient_order = ExtResource("5_6rp5u")
+
+[node name="TestAnims" type="Node2D"]
 script = ExtResource("3_qcy2o")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -14,14 +21,19 @@ mouse_filter = 0
 texture = ExtResource("1_buq3h")
 
 [node name="ColorRect" parent="." instance=ExtResource("3_ipgp1")]
+visible = false
 metadata/progression = 0.501
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_mriyk")
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 1)
 
 [node name="HSlider" type="HSlider" parent="."]
 offset_left = 370.0
 offset_top = 634.0
 offset_right = 903.0
 offset_bottom = 714.0
-min_value = 0.501
 max_value = 1.0
 step = 0.01
-value = 0.501
